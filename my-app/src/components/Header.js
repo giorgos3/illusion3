@@ -1,6 +1,7 @@
 import React from 'react';
-import CreateUser from './components/CreateUser'
-import Login from './components/Login'
+import "bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "react-bootstrap/Navbar";
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -12,26 +13,40 @@ import {
 const Header  = () =>{
 
 return( 
-    <Router>
-      <div>
-        <nav>
-          <ul>
+    // <Router>
+    //   <div>
+    //     <nav style={{background:'black'}}>
+    //       <ul>
               
-            <li>
-              <Link to="/register" >Register</Link>
-            </li>
-            <li>
-              <Link to="/">Login</Link>
-            </li>
+    //         <li>
+    //           <Link to="/register" >Register</Link>
+    //         </li>
+    //         <li>
+    //           <Link to="/">Login</Link>
+    //         </li>
 
-          </ul>
-        </nav>
+    //       </ul>
+    //     </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+    //     {/* A <Switch> looks through its children <Route>s and
+    //         renders the first one that matches the current URL. */}
         
-      </div>
-    </Router>
+    //   </div>
+    // </Router>
+    <>
+    <Router>
+    <Navbar bg="dark">
+      <Navbar.Brand ><Link to="/">Home</Link></Navbar.Brand>
+      <Navbar.Brand ><Link to="/dashboard">Shop</Link></Navbar.Brand>
+      <Navbar.Brand ><Link to="/about">About Us</Link></Navbar.Brand>
+      <Navbar.Brand ><Link to="/about">Contact Us</Link></Navbar.Brand>
+      </Navbar>
+      </Router>   
+  </>
+    
+
+
+
 )
 
 }

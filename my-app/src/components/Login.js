@@ -47,7 +47,7 @@ return(
 
             <div className="row loginForm">
                 <div className="col-12 mrgnbtm">
-                <h2>Create User</h2>
+                <h2>Login</h2>
                 <form>
                     <div className="row">
                         <div className="form-group col-12" >
