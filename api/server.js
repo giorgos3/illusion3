@@ -9,15 +9,15 @@ const users = [];
 
 
 
-const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'my-app',
-  password: '1234',
-  port: 5432,
-});
+// const client = new Client({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'my-app',
+//   password: '1234',
+//   port: 5432,
+// });
 
-client.connect();
+// client.connect();
 
 
 app.post('/login',function(req,res){
@@ -25,7 +25,7 @@ app.post('/login',function(req,res){
 //   const pwd = req.body.password;
 	
 	
-  return res.json({ user: 'hello' });
+  return res.json('hello');
 });
 
 
