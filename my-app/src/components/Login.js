@@ -1,6 +1,15 @@
 import React,{useState} from 'react'
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch , useHistory } from "react-router-dom";
+import DashBoard from './DashBoard'
 
+
+
+
+
+const LoginUser = () => {
+
+
+    let history = useHistory();
 
  const submit = () =>{
 
@@ -15,9 +24,12 @@ import { Link, Route, Switch } from "react-router-dom";
     };
 
     fetch('http://localhost:3000/login', requestOptions)
-            .then(response => console.log(response))
+            .then(response => response.json())
         .then(response => {
             console.log(response);
+            if(response == 'hello'){
+                history.push('/dashboard')
+            }
             
         }) 
         .catch(error => {
@@ -26,12 +38,7 @@ import { Link, Route, Switch } from "react-router-dom";
         });
         
 
-
-
 }
-
-
-const LoginUser = () => {
 
   
 
