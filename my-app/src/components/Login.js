@@ -43,7 +43,7 @@ const LoginUser = () => {
   
 
 return(
-    <div className="container">
+    <div className="container-fluid">
 
             <div className="row loginForm">
                 <div className="col-12 mrgnbtm">

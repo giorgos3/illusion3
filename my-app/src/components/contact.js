@@ -1,14 +1,12 @@
 import React from 'react';
-import Header from './Header'
 
 
 const Contact = () =>{
 
     return(
-        <div className="container">
-        <Header/>
+        <div className="container-fluid">
         <div className="row">
-            <div className="col-12">
+            <div className="col-12" style={{textAlign: "center"}}>
                 <h3>Contact Us</h3>
                
             </div>

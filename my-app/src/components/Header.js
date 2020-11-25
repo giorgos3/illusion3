@@ -1,6 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "react-bootstrap/Navbar";
+import Navbar from 'react-bootstrap/Navbar'
 
 import {
     BrowserRouter as Router,
@@ -13,35 +13,27 @@ import {
 const Header  = () =>{
 
 return( 
-    // <Router>
-    //   <div>
-    //     <nav style={{background:'black'}}>
-    //       <ul>
-              
-    //         <li>
-    //           <Link to="/register" >Register</Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/">Login</Link>
-    //         </li>
-
-    //       </ul>
-    //     </nav>
-
-    //     {/* A <Switch> looks through its children <Route>s and
-    //         renders the first one that matches the current URL. */}
-        
-    //   </div>
-    // </Router>
+   
     <>
-    <Router>
-    <Navbar bg="dark">
-      <Navbar.Brand ><Link to="/">Home</Link></Navbar.Brand>
-      <Navbar.Brand ><Link to="/dashboard">Shop</Link></Navbar.Brand>
-      <Navbar.Brand ><Link to="/about">About Us</Link></Navbar.Brand>
-      <Navbar.Brand ><Link to="/about">Contact Us</Link></Navbar.Brand>
-      </Navbar>
-      </Router>   
+
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Navbar.Brand href="#home">E-shop</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    
+   
+  
+      <div className="mr-auto">
+        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>Home</Link>
+        <Link to="/dashboard" style={{ textDecoration: 'none', padding:'10px' }}>Shop</Link>
+        <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>About Us</Link>
+        <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>Contact Us</Link>
+      </div>
+      
+   
+ 
+  </Navbar.Collapse>
+</Navbar>
   </>
     
 

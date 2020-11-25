@@ -6,29 +6,35 @@ import CreateUser from './components/CreateUser';
 import About from './components/about';
 import Contact from './components/contact';
 import Login from './components/Login';
+import Header from './components/Header'
+import ProductDetail from './components/ProductDetail'
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     useHistory
   } from "react-router-dom";
+;
 
 
 function App(){
 
   let history = useHistory();
   return (
+    <>
+  
     <Router history={history}>
-    <Switch>
-        <Route exact path="/contact"   component={Contact} ></Route>
-        <Route exact path="/about"   component={About} ></Route>
-        <Route exact path="/dashboard"   component={DashBoard} ></Route>
-        <Route exact path="/register"   component={CreateUser} ></Route>
-        <Route exact path="/" component={Login}></Route>
-      </Switch>
+        <Header/>
+      <Switch>
+        <Route exact path="/product/:id"   component={ProductDetail} ></Route>
+          <Route exact path="/contact"   component={Contact} ></Route>
+          <Route exact path="/about"   component={About} ></Route>
+          <Route exact path="/dashboard"   component={DashBoard} ></Route>
+          <Route exact path="/register"   component={CreateUser} ></Route>
+          <Route exact path="/" component={Login}></Route>
+        </Switch>
       </Router>
-    
+    </>
   );
   
 
