@@ -7,6 +7,7 @@ import About from './components/about';
 import Contact from './components/contact';
 import Login from './components/Login';
 import Header from './components/Header'
+import Footer from './components/footer';
 import ProductDetail from './components/ProductDetail'
 import {
     BrowserRouter as Router,
@@ -33,6 +34,7 @@ function App(){
           <Route exact path="/register"   component={CreateUser} ></Route>
           <Route exact path="/" component={Login}></Route>
         </Switch>
+        <Footer/>
       </Router>
     </>
   );
