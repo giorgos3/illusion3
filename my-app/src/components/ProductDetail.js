@@ -3,11 +3,16 @@ import React from 'react';
 
 
 
-const ProductDetail = () =>{
+const ProductDetail = ( props ) =>{
+    // const  data  = this.props
 
+    
 return(
     <div className="container-fluid">
-        gamose
+        <div className="row">
+            <h2> { props.location.state.title} </h2>
+        </div>
+        
     </div>
 )
 

@@ -12,11 +12,16 @@ const DashBoard  =  () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
+        const fetchData = async () => { 
+            const item  = await fetch('https://fakestoreapi.com/products')
                 .then(res=>res.json())
                 .then(json=>setProducts(json))
-
+               
+            }
+            fetchData();
       }, []);
+
+     
 
       console.log(products)
         
@@ -34,7 +39,7 @@ const DashBoard  =  () => {
                                     {/* <p className="card-text" style={{fontSize:'8x'}}>{items.description}</p> */}
                                    
                         
-                                    <Link type="button" to={`/product/${items.id}`}><button className="btn btn-info">View Product</button></Link>
+                                    <Link type="button"  to={{pathname: `/product/${items.id}`, state: items}}><button className="btn btn-info">View Product</button></Link>
                                    
                                 </div>
                             </div>
