@@ -27,7 +27,7 @@ const DashBoard  =  () => {
       }, [category]);
 
      
-      console.log(products)
+      
     
         
       const itemProducts = () =>{
@@ -75,6 +75,7 @@ const DashBoard  =  () => {
   <Dropdown.Menu>
     <Dropdown.Item onClick={ () =>setCategory('')}>All</Dropdown.Item>
     <Dropdown.Item onClick={ () =>setCategory('category/men%20clothing')}>Men Clothes</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>setCategory('category/women%20clothing')}>Women Clothes</Dropdown.Item>
     <Dropdown.Item onClick={ () =>setCategory('category/jewelery')}>Jewelery</Dropdown.Item>
     <Dropdown.Item onClick={ () =>setCategory('category/electronics')}>Electronic</Dropdown.Item>
   </Dropdown.Menu>

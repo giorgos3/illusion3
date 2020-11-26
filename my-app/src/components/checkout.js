@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useState} from 'react';
+import BootstrapCarousel from './Carousel';
 import '../App.css';
 import {
     Link
@@ -7,11 +8,13 @@ import {
 
 const CheckOut = (props) =>{
 
-    
+    const [quantity, setQuantity] = useState(1);
 
     function getProduct(){
-                if(props.location.state === undefined){
 
+        
+                if(props.location.state === undefined){
+                    
                     return(
                         <div className="empty-item">
                             <div><i className="fa fa-shopping-basket" style={{color:'black'}}></i></div>
@@ -29,6 +32,7 @@ const CheckOut = (props) =>{
                                  <thead>
                                      <tr>
                                       <th>Product</th>
+                                      <th>Quantity</th>
                                        <th>Title</th>
                                      <th>Price</th>
                                  </tr>
@@ -36,6 +40,11 @@ const CheckOut = (props) =>{
                                <tbody>
                                   <tr>
                                     <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={ props.location.state.image} alt="" />}</td>
+                                    <td>
+                                        <button onClick={ () => setQuantity( quantity + 1)}>+</button>
+                                            <input className="quantity" value={quantity}  />
+                                        <button onClick={ () => setQuantity( quantity - 1)}>-</button>
+                                    </td>
                                     <td>{ props.location.state.title}</td>
                                     <td>€ { props.location.state.price} </td>
                                    </tr>
@@ -72,7 +81,8 @@ const CheckOut = (props) =>{
     return(
 
         <div className="container-fluid">
-            <div className="row">
+            <BootstrapCarousel></BootstrapCarousel>
+            <div className="row"> 
                 <div className="col-12" style={{textAlign:'center' , padding:'20px'}}>
                      {getProduct()}
                 </div>
