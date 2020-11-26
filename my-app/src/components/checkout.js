@@ -35,7 +35,7 @@ const CheckOut = (props) =>{
                                </thead>
                                <tbody>
                                   <tr>
-                                    <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={ props.location.state.image} alt="image prodcut" />}</td>
+                                    <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={ props.location.state.image} alt="" />}</td>
                                     <td>{ props.location.state.title}</td>
                                     <td>€ { props.location.state.price} </td>
                                    </tr>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import BootstrapCarousel from './Carousel';
+import Dropdown from 'react-bootstrap/Dropdown'
+
 import {
 
     Link
@@ -9,23 +11,29 @@ import {
 const DashBoard  =  () => {
 
     const [products, setProducts] = useState([]);
+    const [category, setCategory] = useState('');
 
     useEffect(() => {
+        
         const fetchData = async () => { 
-            const item  = await fetch('https://fakestoreapi.com/products')
+
+            
+            const item  = await fetch('https://fakestoreapi.com/products/'+ category)
                 .then(res=>res.json())
                 .then(json=>setProducts(json))
                
             }
             fetchData();
-      }, []);
+      }, [category]);
 
      
-
       console.log(products)
+    
         
       const itemProducts = () =>{
          
+
+
                 return(
                     products.map((items) => (
                     
@@ -54,9 +62,23 @@ const DashBoard  =  () => {
     return(
         
         <div className="container-fluid">
+            <BootstrapCarousel></BootstrapCarousel>
             <div className="row">
+              
                 <div className="col-12">
                     <h3 style={{textAlign: "center"}}>Shop</h3>
+                    <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+     Category
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item onClick={ () =>setCategory('')}>All</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>setCategory('category/men%20clothing')}>Men Clothes</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>setCategory('category/jewelery')}>Jewelery</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>setCategory('category/electronics')}>Electronic</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
                 </div>
             </div>
             <div className="row">
