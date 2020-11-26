@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
-import { Link, Route, Switch , useHistory } from "react-router-dom";
-import DashBoard from './DashBoard'
+import React from 'react'
+import { Link , useHistory } from "react-router-dom";
+
 
 
 
@@ -27,7 +27,7 @@ const LoginUser = () => {
             .then(response => response.json())
         .then(response => {
             console.log(response);
-            if(response == 'hello'){
+            if(response === 'hello'){
                 history.push('/dashboard')
             }
             

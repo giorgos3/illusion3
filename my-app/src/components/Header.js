@@ -2,11 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from 'react-bootstrap/Navbar'
 import 'font-awesome/css/font-awesome.min.css';
-
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link
   } from "react-router-dom";
 
@@ -31,6 +27,9 @@ return(
         <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>Contact Us</Link>
         
       </div>
+      <Link to="/checkout" style={{ textDecoration: 'none', padding:'10px' }}>
+      <div><i className="fa fa-shopping-basket" style={{color:'white'}}></i></div>
+      </Link>
       <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>
       <div><i className="fa fa-user" style={{color:'white'}}></i></div>
       </Link>
