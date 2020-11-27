@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link , useHistory } from "react-router-dom";
+import {useDispatch, useSelector} from 'react-redux';
+import {getLogged} from './action/isLogged';
 
 
 
@@ -8,8 +10,10 @@ import { Link , useHistory } from "react-router-dom";
 
 const LoginUser = () => {
 
-
+    
     let history = useHistory();
+    const dispatch = useDispatch();
+    const isLogged = useSelector((state) => state.isLogged)
 
  const submit = () =>{
 
@@ -28,7 +32,8 @@ const LoginUser = () => {
         .then(response => {
             console.log(response);
             if(response === 'hello'){
-                history.push('/dashboard')
+                dispatch(getLogged())
+                history.push('/')
             }
             
         }) 

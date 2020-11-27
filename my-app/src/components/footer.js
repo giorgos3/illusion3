@@ -1,33 +1,51 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from 'react-bootstrap/Navbar'
+import  '../App.css'
+
 
 const Footer = () =>{
 
 
     return( 
    
-        <>
-    
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">E-shop</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        
-       
-          {/* <Switch>
-          <div className="mr-auto">
-            <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>Home</Link>
-            <Link to="/dashboard" style={{ textDecoration: 'none', padding:'10px' }}>Shop</Link>
-            <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>About Us</Link>
-            <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>Contact Us</Link>
+      <div className="footer">
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h4>Footer</h4>
+              <ul className="list-unlisted">
+                <li>This is a text</li>
+                <li>This is a text</li>
+                <li>This is a text</li>
+                <li>This is a text</li>
+              </ul>
+            </div>
+            <div className="col">
+              <h4>Footer1</h4>
+              <ul className="list-unlisted">
+                <li>This is a text</li>
+                <li>This is a text</li>
+                <li>This is a text</li>
+                <li>This is a text</li>
+              </ul>
+            </div>
+            <div className="col">
+              <h4>Footer2</h4>
+              <ul className="list-unlisted">
+                <li>This is a text</li>
+                <li>This is a text</li>
+                <li>This is a text</li>
+                <li>This is a text</li>
+              </ul>
+            </div>
           </div>
-          </Switch>   */}
-       
-     
-      </Navbar.Collapse>
-    </Navbar>
-      </>
+          <div className="row">
+            <div className="col-sm">
+                Copyright illusion3
+            </div>           
+          </div>
+        </div>
+    </div>
         
     
     

@@ -23,22 +23,25 @@ function App(){
 
   let history = useHistory();
   return (
-    <>
-  
-    <Router history={history}>
-        <Header/>
-      <Switch>
-          <Route exact path="/checkout"   component={CheckOut} ></Route>
-          <Route exact path="/product/:id"   component={ProductDetail} ></Route>
-          <Route exact path="/contact"   component={Contact} ></Route>
-          <Route exact path="/about"   component={About} ></Route>
-          <Route exact path="/dashboard"   component={DashBoard} ></Route>
-          <Route exact path="/register"   component={CreateUser} ></Route>
-          <Route exact path="/" component={Login}></Route>
-        </Switch>
-      </Router>
-      <Footer/>
-    </>
+    
+      <div className="page-container">
+        <div className="content-wrap">
+          <Router history={history}>
+              <Header/>
+            <Switch>
+                <Route exact path="/checkout"   component={CheckOut} ></Route>
+                <Route exact path="/product/:id"   component={ProductDetail} ></Route>
+                <Route exact path="/contact"   component={Contact} ></Route>
+                <Route exact path="/about"   component={About} ></Route>
+                <Route exact path="/login"   component={Login} ></Route>
+                <Route exact path="/register"   component={CreateUser} ></Route>
+                <Route exact path="/" component={DashBoard}></Route>
+              </Switch>
+            </Router> 
+        </div>
+          <Footer/>
+      </div>
+    
   );
   
 

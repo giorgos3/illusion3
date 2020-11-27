@@ -13,7 +13,7 @@ export const getJewellery = () => {
 
     return{
 
-        type:'JEWELLERY' 
+        type:'JEWELERY' 
     }
 }
 

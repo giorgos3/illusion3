@@ -4,27 +4,36 @@ import '../App.css';
 import {
     Link
   } from "react-router-dom";
+  import {useDispatch, useSelector} from 'react-redux';
 
 
-const CheckOut = (props) =>{
+const CheckOut = () =>{
 
+    const item = useSelector((state) => state.addProduct)
     const [quantity, setQuantity] = useState(1);
 
     function getProduct(){
 
+        var item_Products = item.info
+
         
-                if(props.location.state === undefined){
+
+        
+                if(item_Products === undefined || item_Products === ''){
                     
                     return(
                         <div className="empty-item">
                             <div><i className="fa fa-shopping-basket" style={{color:'black'}}></i></div>
                             <h3>YOuR SHOPPING CART IS EMPTY</h3>
                             <p>We invite you to get acquainted with an assortment of our shop. Surely you can find something for yourself!</p>
-                            <Link type="button"  to='/dashboard'><button className="btn btn-primary">Go to SHOP</button></Link>
+                            <Link type="button"  to='/'><button className="btn btn-primary">Go to SHOP</button></Link>
                         </div>
                     )
                 }
                 else{
+
+                    var itemProducts = item_Products.split("+");
+                    console.log(item.info);
                         return(
 
                             <div className="product-item">
@@ -39,14 +48,14 @@ const CheckOut = (props) =>{
                                </thead>
                                <tbody>
                                   <tr>
-                                    <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={ props.location.state.image} alt="" />}</td>
+                                    <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={itemProducts[0] } alt="" />}</td>
                                     <td>
                                         <button onClick={ () => setQuantity( quantity + 1)}>+</button>
                                             <input className="quantity" value={quantity}  />
                                         <button onClick={ () => setQuantity( quantity - 1)}>-</button>
                                     </td>
-                                    <td>{ props.location.state.title}</td>
-                                    <td>€ { props.location.state.price} </td>
+                                    <td>{ itemProducts[1]}</td>
+                                    <td>€ { itemProducts[2]} </td>
                                    </tr>
                                </tbody>
                                  </table>
@@ -76,7 +85,7 @@ const CheckOut = (props) =>{
         }
     }
 
-    console.log(props)
+    
     
     return(
 

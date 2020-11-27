@@ -46,9 +46,6 @@ const DashBoard  =  () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{items.title}</h5>
                                     <h5 className="card-title">€{items.price}</h5>
-                                    {/* <p className="card-text" style={{fontSize:'8x'}}>{items.description}</p> */}
-                                   
-                        
                                     <Link type="button"  to={{pathname: `/product/${items.id}`, state: items}}><button className="btn btn-info">View Product</button></Link>
                                    
                                 </div>
@@ -86,8 +83,7 @@ const DashBoard  =  () => {
                 </div>
             </div>
             <div className="row">
-                {itemProducts()}
-                       
+                {itemProducts()}           
             </div>
         </div>
     )
