@@ -10,11 +10,11 @@ export class BootstrapCarousel extends Component {
 
                         <div>  
 
-                         <div class='container-fluid' >  
+                         <div className='container-fluid' >  
 
                           <div className="row title" style={{ marginBottom: "20px" }} >  
 
-                          <div class="col-sm-12 btn btn-primary">  
+                          <div className="col-sm-12 btn btn-primary">  
 
                           Welcome to E-Shop
 
@@ -26,7 +26,7 @@ export class BootstrapCarousel extends Component {
 
                          <div className='container-fluid' >  
 
-                         <Carousel interval={600} keyboard={false} pauseOnHover={true}>  
+                         <Carousel interval={600} keyboard={false} >  
 
                          <Carousel.Item style={{'height':"300px"}}  >  
 

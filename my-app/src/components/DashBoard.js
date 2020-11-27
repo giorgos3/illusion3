@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import BootstrapCarousel from './Carousel';
 import Dropdown from 'react-bootstrap/Dropdown'
+import {useDispatch, useSelector} from 'react-redux';
+import  {getAll, getJewellery , getWomenCLothing, getMenCLothing, getElectronics} from './action/productsAPI';
 
 import {
 
@@ -9,10 +11,11 @@ import {
 
 
 const DashBoard  =  () => {
-
+    const dispatch = useDispatch();
+    
     const [products, setProducts] = useState([]);
-    const [category, setCategory] = useState('');
-
+   
+    const category = useSelector((state) => state.getProduct)
     useEffect(() => {
         
         const fetchData = async () => { 
@@ -27,7 +30,7 @@ const DashBoard  =  () => {
       }, [category]);
 
      
-      
+    console.log(category)
     
         
       const itemProducts = () =>{
@@ -73,11 +76,11 @@ const DashBoard  =  () => {
   </Dropdown.Toggle>
 
   <Dropdown.Menu>
-    <Dropdown.Item onClick={ () =>setCategory('')}>All</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>setCategory('category/men%20clothing')}>Men Clothes</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>setCategory('category/women%20clothing')}>Women Clothes</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>setCategory('category/jewelery')}>Jewelery</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>setCategory('category/electronics')}>Electronic</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>dispatch(getAll())}>All</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>dispatch(getMenCLothing())}>Men Clothes</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>dispatch(getWomenCLothing)}>Women Clothes</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>dispatch(getJewellery())}>Jewelery</Dropdown.Item>
+    <Dropdown.Item onClick={ () =>dispatch(getElectronics())}>Electronic</Dropdown.Item>
   </Dropdown.Menu>
 </Dropdown>
                 </div>

@@ -6,14 +6,27 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
+import { Provider } from "react-redux";
+import { createStore , applyMiddleware, compose} from 'redux';
+import thunk from 'redux-thunk';
+import allReducer from './components/reducer/index';
 
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// applyMiddleware(thunk) will be used to handle asynchronous fetch in a dispatch
+const store = createStore(allReducer, composeEnhancer(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  
+
+  
+      <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  ,
   document.getElementById('root')
 );
 

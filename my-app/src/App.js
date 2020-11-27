@@ -36,8 +36,8 @@ function App(){
           <Route exact path="/register"   component={CreateUser} ></Route>
           <Route exact path="/" component={Login}></Route>
         </Switch>
-        <Footer/>
       </Router>
+      <Footer/>
     </>
   );
   
