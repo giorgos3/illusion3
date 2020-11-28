@@ -51,7 +51,11 @@ return(
             </Dropdown.Toggle>
               <div className="header-menu" style={{background:'red'}}>
               <Dropdown.Menu>
-                  <Dropdown.Item >Profile</Dropdown.Item>
+                  <Dropdown.Item >
+                  <Link to="/profile" style={{ textDecoration: 'none', padding:'10px' }}>
+                    Profile
+                    </Link>
+                    </Dropdown.Item>
                   <Dropdown.Item >Order History</Dropdown.Item>
                   <Dropdown.Item >Change Password</Dropdown.Item>
                   <Dropdown.Item onClick={ () =>{ dispatch(getLogged()) }} >Logout</Dropdown.Item>

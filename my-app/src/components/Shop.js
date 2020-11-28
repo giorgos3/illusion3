@@ -21,7 +21,7 @@ const Shop  =  () => {
         const fetchData = async () => { 
 
             
-            const item  = await fetch('https://fakestoreapi.com/products/'+ category)
+             await fetch('https://fakestoreapi.com/products/'+ category)
                 .then(res=>res.json())
                 .then(json=>setProducts(json))
                
