@@ -41,7 +41,7 @@ return(
       <div><i className="fa fa-shopping-basket" style={{color:'white'}}></i></div>
       </Link>
       { isLogged === true ? 
-        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>
+        <Link to="/login" style={{ textDecoration: 'none', padding:'10px' }}>
         <div><i className="fa fa-user" style={{color:'white'}}></i></div>
         </Link>
       : 

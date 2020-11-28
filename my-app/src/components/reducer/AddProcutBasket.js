@@ -1,5 +1,5 @@
-const getProductReducer = (state = {} , action) => {
-        console.log(action.payload)
+const AddProductReducer = (state = {} , action) => {
+        
     switch(action.type){
 
         case 'ADD_BASKET':
@@ -18,4 +18,4 @@ const getProductReducer = (state = {} , action) => {
 
 }
 
-export default  getProductReducer;
+export default  AddProductReducer;

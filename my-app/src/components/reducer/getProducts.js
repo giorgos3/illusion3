@@ -1,6 +1,5 @@
 
-const { bindActionCreators } = require("redux");
-const getProductReduce = (state ='', action) => {
+const getProductReducer = (state ='', action) => {
 
 
         switch(action.type){
@@ -13,8 +12,8 @@ const getProductReduce = (state ='', action) => {
             case 'JEWELERY':
                 return state='category/jewelery'
 
-            case 'WOMEN_CLOTING':
-                return state='category/women%20clothing'
+            case 'WOMEN_CLOTHING':
+                return state='category/women%20clothing' 
                 
             case 'ELECTRONICS':
                  return state='category/electronics' 
@@ -26,4 +25,4 @@ const getProductReduce = (state ='', action) => {
         
 }
 
-export default getProductReduce;
+export default getProductReducer;

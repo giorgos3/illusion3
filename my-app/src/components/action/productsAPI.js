@@ -29,7 +29,7 @@ export const getWomenCLothing = () => {
 
     return{
 
-        type:'WOMEN_CLOTING' 
+        type:'WOMEN_CLOTHING' 
     }
 }
 

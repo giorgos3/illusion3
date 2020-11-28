@@ -17,7 +17,7 @@ const ProductDetail = ( props ) =>{
     const img = props.location.state.image;
     const title = props.location.state.title;
     const price = props.location.state.price;
-    const info = img + '+' + title + '+' + price
+    const info = img + '+' + title + '+' + price;
     
 return(
     <div className="container-fluid">

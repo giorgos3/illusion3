@@ -1,13 +1,13 @@
-import getProductReduce from './getProducts';
+import getProductReducer from './getProducts';
 import loggedReducer from './isLogged';
-import  getProductReducer from './AddProcutBasket';
+import  AddProductReducer from './AddProcutBasket';
 import {combineReducers} from 'redux';
 
 
 const allReducer = combineReducers({
-        getProduct : getProductReduce,
+        getProductCategory : getProductReducer,
         isLogged : loggedReducer,
-        addProduct : getProductReducer
+        addProduct : AddProductReducer
 });
 
 

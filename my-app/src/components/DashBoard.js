@@ -15,7 +15,7 @@ const DashBoard  =  () => {
     
     const [products, setProducts] = useState([]);
    
-    const category = useSelector((state) => state.getProduct)
+    const category = useSelector((state) => state.getProductCategory)
     useEffect(() => {
         
         const fetchData = async () => { 
@@ -42,7 +42,7 @@ const DashBoard  =  () => {
                     
                         <div className="col-lg-3 col-md-6 col-sm-12" style={{marginTop:'10px'}} key={items.id}>
                             <div  className="card mx-auto" style={{width:'auto' , textAlign:'center', height:'auto'}}>
-                                <img className="mx-auto img-responsive" src={items.image} width="40%" height="40%" style={{paddingTop:'10px'}} alt="Card image cap"/>
+                                <img className="mx-auto img-responsive" src={items.image} width="150" height="150" style={{paddingTop:'10px'}} alt="Card image cap"/>
                                 <div className="card-body">
                                     <h5 className="card-title">{items.title}</h5>
                                     <h5 className="card-title">€{items.price}</h5>
