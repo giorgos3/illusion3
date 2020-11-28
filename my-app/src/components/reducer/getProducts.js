@@ -2,6 +2,8 @@
 const getProductReducer = (state ='', action) => {
 
 
+    
+
         switch(action.type){
             case 'ALL':
                 return state=''

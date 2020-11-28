@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BootstrapCarousel from './Carousel';
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
 import {useDispatch, useSelector} from 'react-redux';
 import  {getAll, getJewellery , getWomenCLothing, getMenCLothing, getElectronics} from './action/productsAPI';
 
@@ -10,7 +10,7 @@ import {
   } from "react-router-dom";
 
 
-const DashBoard  =  () => {
+const Shop  =  () => {
     const dispatch = useDispatch();
     
     const [products, setProducts] = useState([]);
@@ -68,18 +68,18 @@ const DashBoard  =  () => {
                 <div className="col-12">
                     <h3 style={{textAlign: "center"}}>Shop</h3>
                     <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-     Category
-  </Dropdown.Toggle>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            Category
+                        </Dropdown.Toggle>
 
-  <Dropdown.Menu>
-    <Dropdown.Item onClick={ () =>dispatch(getAll())}>All</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>dispatch(getMenCLothing())}>Men Clothes</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>dispatch(getWomenCLothing)}>Women Clothes</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>dispatch(getJewellery())}>Jewelery</Dropdown.Item>
-    <Dropdown.Item onClick={ () =>dispatch(getElectronics())}>Electronic</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={ () =>dispatch(getAll())}>All</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getMenCLothing())}>Men Clothes</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getWomenCLothing)}>Women Clothes</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getJewellery())}>Jewelery</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getElectronics())}>Electronic</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
             </div>
             <div className="row">
@@ -90,4 +90,4 @@ const DashBoard  =  () => {
 
 }
 
-export default DashBoard;
+export default Shop;

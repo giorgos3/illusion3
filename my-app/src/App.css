@@ -32,6 +32,12 @@
   color: white;
   text-align: center;
 }
+
+.header-menu .dropdown-menu{
+  margin: .250rem -6.5rem 0!important;
+  max-width: 9rem;
+
+}
 .form-group{
   text-align: left;
 }
@@ -59,4 +65,15 @@
 label{
   text-align: left;
   
+}
+
+@media only screen and (max-width: 600px)  {
+
+
+  .header-menu .dropdown-menu{
+    margin: .250rem 0 0!important;
+    max-width: 9rem;
+  
+  }
+
 }

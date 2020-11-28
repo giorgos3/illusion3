@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import  DashBoard from './components/DashBoard';
+import  Shop from './components/Shop';
 import CreateUser from './components/CreateUser';
 import About from './components/about';
 import Contact from './components/contact';
@@ -35,7 +35,7 @@ function App(){
                 <Route exact path="/about"   component={About} ></Route>
                 <Route exact path="/login"   component={Login} ></Route>
                 <Route exact path="/register"   component={CreateUser} ></Route>
-                <Route exact path="/" component={DashBoard}></Route>
+                <Route exact path="/" component={Shop}></Route>
               </Switch>
             </Router> 
         </div>
