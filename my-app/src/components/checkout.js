@@ -6,6 +6,8 @@ import {
   } from "react-router-dom";
   import {useDispatch, useSelector} from 'react-redux';
 
+  
+
 
 const CheckOut = () =>{
 
@@ -15,6 +17,7 @@ const CheckOut = () =>{
     function getProduct(){
 
         var item_Products = item.info
+        
         console.log(item);
 
         
