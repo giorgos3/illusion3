@@ -1,15 +1,19 @@
-const AddProductReducer = (state = {} , action) => {
+const AddProductReducer = (state = { items: [] } , action) => {
         
-    
-    
-    switch(action.type){
 
+    // state.push(payload)
+
+    let basket = state.items
+    let newState = basket.push(action.payload)
+    
+    console.log(state.items)
+    switch(action.type){
+        
         case 'ADD_BASKET':
-            return state = {
+            return{ items: [...state.items, newState ]};
+                // console.log(action.payload).
+            // return state = state.push(action.payload);
                 
-                info: action.payload,
-                
-                } 
         default :
             return state
       

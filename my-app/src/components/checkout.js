@@ -15,6 +15,7 @@ const CheckOut = () =>{
     function getProduct(){
 
         var item_Products = item.info
+        console.log(item);
 
         
 
