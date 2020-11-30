@@ -43,7 +43,7 @@ const Shop  =  () => {
                     products.map((items) => (
                            
                         <div className="col-lg-3 col-md-6 col-sm-12" style={{marginTop:'10px'}} key={items.id}>
-                            <div  className="card mx-auto" style={{width:'auto' , textAlign:'center', height:'auto'}}>
+                            <div  className="card mx-auto" style={{width:'auto' , textAlign:'center', height:'350px'}}>
                                 <img className="mx-auto img-responsive" src={items.image} width="150" height="150" style={{paddingTop:'10px'}} alt="Card image cap"/>
                                 <div className="card-body">
                                     <h5 className="card-title">{items.title}</h5>

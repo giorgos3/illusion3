@@ -22,7 +22,6 @@ const CheckOut = () =>{
             itemBasket = itemBasket.filter(function(itemBasket){
                 return itemBasket.id !== itemBasket.id;
         }) 
-        console.log('hi!!')
         return itemBasket;
         }
 

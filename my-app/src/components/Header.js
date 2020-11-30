@@ -39,6 +39,12 @@ return(
         <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>Shop</Link>
         <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>About Us</Link>
         <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>Contact Us</Link>
+        <select name="cars" id="cars">
+          <option value="volvo">English</option>
+          <option value="saab">Russian</option>
+          <option value="opel">Portuguese</option>
+          <option value="audi">Espanyol</option>
+      </select>
         
       </div>
       <Link to="/checkout" style={{ textDecoration: 'none', padding:'10px' }}>
