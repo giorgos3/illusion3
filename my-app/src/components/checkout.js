@@ -13,17 +13,28 @@ const CheckOut = () =>{
 
     const item = useSelector((state) => state.addProduct)
     const [quantity, setQuantity] = useState(1);
-    let itemBasket = [...item.basket , item.basket]
-    console.log(itemBasket)
+    let [itemBasket, setItemBasket] = useState([...item.basket ])
+    
 
+    
+          
     const getProduct = () => {
 
+        
         function RemoveItem(id){
-            itemBasket = itemBasket.filter(function(itemBasket){
-                return itemBasket.id !== itemBasket.id;
-        }) 
-        return itemBasket;
-        }
+            console.log('h1')
+            console.log(id)
+           
+            let newItemBasket = [ ...itemBasket.filter(item => item.id !== id)]
+           
+   
+            console.log(newItemBasket)
+               setItemBasket(...newItemBasket)
+               
+           
+             }
+      
+      
 
         
         
@@ -45,7 +56,7 @@ const CheckOut = () =>{
                         return(
                             <div class="container">
 
-                                {itemBasket.map((item) => (
+                                {itemBasket.map(item => (
  
                                     <div className="product-item" key={item.key}>
                                     <table>            
