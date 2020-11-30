@@ -9,6 +9,27 @@
   flex: 1;
 }
 
+.center{text-align: center;}
+
+.list-unlisted{ list-style: none;}
+
+table{
+  margin:0 auto;
+}
+
+th,td{
+  width: 250px;
+  text-align: center;
+}
+
+
+.button-proceed{
+  padding:50px;
+}
+.quantity{
+  width: 50px;
+  text-align: center;
+}
 
 
 .footer{

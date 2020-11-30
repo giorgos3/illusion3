@@ -13,14 +13,14 @@ const ProductDetail = ( props ) =>{
     
     const dispatch = useDispatch();
     const addProduct = useSelector((state) => state.addProduct)
-    
 
+    const id = props.location.state.id;
     const img = props.location.state.image;
     const title = props.location.state.title;
     const price = props.location.state.price;
-    // const info = img + '+' + title + '+' + price;
+    
 
-    const info = { 'img' : img ,'title': title, 'price': price}
+    const productDetail = { 'id': id ,'img' : img ,'title': title, 'price': price}
     
 return(
     <div className="container-fluid">
@@ -31,7 +31,8 @@ return(
                 <h3> { props.location.state.title} </h3>
                 <p> { props.location.state.description} </p>
                 <h2> € { props.location.state.price} </h2>
-                <Link type="button"  to='/'><button onClick={() => dispatch(ProductCheckOut(info)) } className="btn btn-primary">Add Card</button></Link>
+                <Link type="button"  to='/'><button onClick={() => dispatch(ProductCheckOut(productDetail)) } className="btn btn-primary">Add Card</button></Link>
+                
                 
                 </div> 
             </div>

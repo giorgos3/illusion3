@@ -9,3 +9,15 @@ export const ProductCheckOut = (payload) => {
     }
 
 }
+
+export const RemoveProductCheckOut = (payload) => {
+ 
+    return{
+        
+        type:'REMOVE_ITEM_BASKET',
+        payload
+        
+
+    }
+
+}

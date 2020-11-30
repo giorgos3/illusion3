@@ -1,28 +1,34 @@
-const AddProductReducer = (state = { items: [] } , action) => {
-        
+import _ from 'lodash';
+import {remove} from 'lodash';
 
-    // state.push(payload)
+const INITIAL_STATE = {
+    basket: []
+};
 
-    
-    
-    console.log(state.items)
-    switch(action.type){
+const AddRemoveProductReducer = (state = INITIAL_STATE, action) => {
         
-        case 'ADD_BASKET':
-                let basket = state.items
-                let newState = basket.push(action.payload)
-            return{ items: [...state.items, newState ]};
-                // console.log(action.payload).
-            // return state = state.push(action.payload);
-                
-        default :
-            return state
-      
+    console.log(action.payload)   
     
-    }
+        switch(action.type){    
+            case 'ADD_BASKET':   
+                return { ...state, basket:[...state.basket,{
+                    id : action.payload.id,
+                    image : action.payload.img,
+                    title : action.payload.title,
+                    price : action.payload.price
+                    }]
+                };
+                case 'REMOVE_ITEM_BASKET':  
+                return state;
+                 
+            default :           
+                return state
+        
+        
+        }
 
     
 
 }
 
-export default  AddProductReducer;
+export default  AddRemoveProductReducer;
