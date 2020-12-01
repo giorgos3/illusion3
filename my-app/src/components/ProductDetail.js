@@ -12,7 +12,7 @@ import {
 const ProductDetail = ( props ) =>{ 
     
     const dispatch = useDispatch();
-    const addProduct = useSelector((state) => state.addProduct)
+    
 
     const id = props.location.state.id;
     const img = props.location.state.image;

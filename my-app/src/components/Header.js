@@ -9,8 +9,9 @@ import {
   } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import {getLogged} from './action/isLogged';
+// import {getLang} from './action/getLang';
 import '../App.css';
-import  { getTranslation, getLanguages } from './language';
+
 
 
 
@@ -18,30 +19,19 @@ import  { getTranslation, getLanguages } from './language';
 const Header  = () =>{
 
   const dispatch = useDispatch();
-
- 
-
-  var [language, changeLanguage] = useState('ru');
-
-  // var [languagesList, changeLanguagesList] = useState(null);
-
   const isLogged = useSelector((state) => state.isLogged);
+  const getLang = useSelector((state) => state.getLang);
+  const [language, setLanguage] = useState('en');
 
-  const translation = getTranslation(language);
-
-
-
-//   initiate = async () => {
-
-//     if (!languagesList) {
-//       changeLanguagesList(getLanguages);
-//   }
-
-
-//   useEffect(() => {
-//     initiate();
-// }, []);
  
+
+ 
+    
+  
+
+   // let lang = getLang[0].en;
+
+  console.log(getLang)
 
 return( 
    
@@ -60,15 +50,15 @@ return(
   
       <div className="mr-auto">
         
-        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{_.get(translation, 'shop')}</Link>
-        <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>{_.get(translation, 'about_us')}</Link>
-        <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>{_.get(translation, 'contact_us')}</Link>
-        <select name="language" id="language">
-          {/* <option value="en" onClick={changeLanguage('en')}>English</option>
-          <option value="ru" onClick={changeLanguage('ru')} >Russian</option>
-          <option value="es" onClick={changeLanguage('es')} >Espanyol</option>
-          <option value="pt" onClick={changeLanguage('pt')} >Portuguese</option> */}
-      </select>
+          {/* <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{lang.language.shop}</Link>
+        <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>{lang.language.about_us}</Link>
+        <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>{lang.language.contact_us}</Link> */}
+        {/* <select name="language" id="language">
+          <option value="en" onClick={setLanguage('en')}>English</option>
+          <option value="ru" onClick={setLanguage('ru')} >Russian</option>
+          <option value="es" onClick={setLanguage('es')} >Espanyol</option>
+          <option value="pt" onClick={setLanguage('pt')} >Portuguese</option>
+      </select> */}
         
       </div>
       <Link to="/checkout" style={{ textDecoration: 'none', padding:'10px' }}>
@@ -83,7 +73,7 @@ return(
               <Dropdown.Menu>
                   <Dropdown.Item >
                   <Link to="/profile" style={{ textDecoration: 'none', padding:'10px' }}>
-                  {_.get(translation, 'prfile')}
+                      Profile
                     </Link>
                     </Dropdown.Item>
                   <Dropdown.Item >Order History</Dropdown.Item>
