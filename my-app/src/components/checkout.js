@@ -5,12 +5,16 @@ import {
     Link
   } from "react-router-dom";
   import {useDispatch, useSelector} from 'react-redux';
+  import {UpdateProductCheckOut} from './action/ProductCheckOut'
+  import {isEmpty} from "lodash";
 
   
 
 
 const CheckOut = () =>{
 
+
+    const dispatch = useDispatch();
     const item = useSelector((state) => state.addProduct)
     const [quantity, setQuantity] = useState(1);
     let [itemBasket, setItemBasket] = useState([...item.basket ])
@@ -22,25 +26,25 @@ const CheckOut = () =>{
 
         
         function RemoveItem(id){
-            console.log('h1')
+            
             console.log(id)
            
             let newItemBasket = [ ...itemBasket.filter(item => item.id !== id)]
            
    
             console.log(newItemBasket)
-               setItemBasket(...newItemBasket)
+               setItemBasket(newItemBasket)
+               dispatch(UpdateProductCheckOut(newItemBasket))
                
            
              }
-      
-      
-
-        
-        
-
+             console.log('/---------------/')
+                console.log(isEmpty(itemBasket))
+                console.log('/---------------/')
+                console.log(itemBasket.length)
+           
             
-                if(item === undefined || item.basket.length === 0){
+                if(item === undefined || item.basket.length === 0 || isEmpty(itemBasket) === true || itemBasket.length === 0  ){
                     
                     return(
                         <div className="empty-item">
@@ -54,7 +58,7 @@ const CheckOut = () =>{
                 else{
 
                         return(
-                            <div class="container">
+                            <div className="container">
 
                                 {itemBasket.map(item => (
  

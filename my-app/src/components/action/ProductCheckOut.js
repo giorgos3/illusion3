@@ -10,11 +10,12 @@ export const ProductCheckOut = (payload) => {
 
 }
 
-export const RemoveProductCheckOut = (payload) => {
+
+export const UpdateProductCheckOut = (payload) => {
  
     return{
         
-        type:'REMOVE_ITEM_BASKET',
+        type:'UPDATE_ITEM_BASKET',
         payload
         
 

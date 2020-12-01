@@ -1,11 +1,9 @@
-import _ from 'lodash';
-import {remove} from 'lodash';
 
 const INITIAL_STATE = {
     basket: []
 };
 
-const AddRemoveProductReducer = (state = INITIAL_STATE, action) => {
+const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
         
     console.log(action.payload)   
     
@@ -17,9 +15,10 @@ const AddRemoveProductReducer = (state = INITIAL_STATE, action) => {
                     title : action.payload.title,
                     price : action.payload.price
                     }]
-                };
-                case 'REMOVE_ITEM_BASKET':  
-                return state;
+                };  
+
+                case 'UPDATE_ITEM_BASKET':  
+                return {...state, basket:[ action.payload ]};
                  
             default :           
                 return state
@@ -31,4 +30,4 @@ const AddRemoveProductReducer = (state = INITIAL_STATE, action) => {
 
 }
 
-export default  AddRemoveProductReducer;
+export default  AddRemoveUpdateProductReducer;

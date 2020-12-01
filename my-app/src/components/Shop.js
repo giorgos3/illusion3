@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import _ from 'lodash';
 import BootstrapCarousel from './Carousel';
 import Dropdown from 'react-bootstrap/Dropdown';
 import {useDispatch, useSelector} from 'react-redux';
 import  {getAll, getJewellery , getWomenCLothing, getMenCLothing, getElectronics} from './action/productsAPI';
-import {ProductCheckOut } from './action/ProductCheckOut';
+import  { getTranslation, getLanguages } from './language';
 
 import {
 
@@ -15,6 +16,10 @@ const Shop  =  () => {
     const dispatch = useDispatch();
     
     const [products, setProducts] = useState([]);
+
+    const translation = getTranslation(language);
+
+    var [language, changeLanguage] = useState('ru');
    
     const category = useSelector((state) => state.getProductCategory)
     useEffect(() => {
@@ -69,7 +74,7 @@ const Shop  =  () => {
             <div className="row">
               
                 <div className="col-12">
-                    <h3 style={{textAlign: "center"}}>Shop</h3>
+                    <h3 style={{textAlign: "center"}}>{_.get(translation, 'shop')}</h3>
                     <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             Category
