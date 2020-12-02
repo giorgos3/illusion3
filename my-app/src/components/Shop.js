@@ -14,8 +14,10 @@ import {
 
 const Shop  =  () => {
     const dispatch = useDispatch();
-    
     const [products, setProducts] = useState([]);
+    const [language, setLanguage] = useState('en'); 
+  
+    
 
    
 

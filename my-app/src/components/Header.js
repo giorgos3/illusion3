@@ -9,8 +9,9 @@ import {
   } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import {getLogged} from './action/isLogged';
-// import {getLang} from './action/getLang';
+import {getLANG, getLANG_ES, getLANG_RU, getLANG_PT } from './action/lang'
 import '../App.css';
+
 
 
 
@@ -20,18 +21,13 @@ const Header  = () =>{
 
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.isLogged);
-  const getLang = useSelector((state) => state.getLang);
-  const [language, setLanguage] = useState('en');
+  const [langList , setLangList] = useState('en')
+  const lang = useSelector((state) => state.Language.lang[0]);
 
- 
-
- 
-    
+  console.log(lang)
+  
   
 
-   // let lang = getLang[0].en;
-
-  console.log(getLang)
 
 return( 
    
@@ -50,17 +46,30 @@ return(
   
       <div className="mr-auto">
         
-          {/* <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{lang.language.shop}</Link>
-        <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>{lang.language.about_us}</Link>
-        <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>{lang.language.contact_us}</Link> */}
-        {/* <select name="language" id="language">
-          <option value="en" onClick={setLanguage('en')}>English</option>
-          <option value="ru" onClick={setLanguage('ru')} >Russian</option>
-          <option value="es" onClick={setLanguage('es')} >Espanyol</option>
-          <option value="pt" onClick={setLanguage('pt')} >Portuguese</option>
-      </select> */}
+        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{lang}</Link>
+        <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>About Us</Link>
+        <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>Contact Us</Link>
+
+        <div className="language">
+      <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+             Select Language
+            </Dropdown.Toggle>
+              <div className="">
+              <Dropdown.Menu>
+                  <Dropdown.Item onClick={dispatch(getLANG())} >English</Dropdown.Item>
+                  <Dropdown.Item onClick={dispatch(getLANG_RU())} >Russian</Dropdown.Item>
+                  <Dropdown.Item onClick={dispatch(getLANG_PT())} >Portuguese</Dropdown.Item>
+                  <Dropdown.Item onClick={dispatch(getLANG_ES())} >Español</Dropdown.Item>
+              </Dropdown.Menu> 
+            </div>
+        </Dropdown>
+
+      </div>
+      
         
       </div>
+      
       <Link to="/checkout" style={{ textDecoration: 'none', padding:'10px' }}>
       <div><i className="fa fa-shopping-basket" style={{color:'white'}}></i></div>
       </Link>

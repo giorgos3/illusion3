@@ -44,7 +44,9 @@ th,td{
 }
 
 
-
+.language{
+  display: inline-block;
+}
 
 .header {
   width: 100%;

@@ -12,6 +12,9 @@ import thunk from 'redux-thunk';
 import allReducer from './components/reducer/index';
 
 
+
+
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // applyMiddleware(thunk) will be used to handle asynchronous fetch in a dispatch

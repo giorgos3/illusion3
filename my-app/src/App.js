@@ -18,10 +18,13 @@ import {
     useHistory
   } from "react-router-dom";
   import PrivateRoute from './components/PrivateRoute';  
-;
+ 
+
 
 
 function App(){
+
+
 
   let history = useHistory();
   return (
@@ -29,8 +32,8 @@ function App(){
       <div className="page-container">
         <div className="content-wrap">
           <Router history={history}>
-              <Header/>
-            <Switch>
+              <Header />
+              <Switch>
                 <Route exact path="/checkout"   component={CheckOut} ></Route>
                 <Route exact path="/product/:id"   component={ProductDetail} ></Route>
                 <Route exact path="/contact"   component={Contact} ></Route>
