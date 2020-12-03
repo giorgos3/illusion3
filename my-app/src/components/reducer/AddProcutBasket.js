@@ -4,9 +4,7 @@ const INITIAL_STATE = {
 };
 
 const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
-        
-    console.log(action.payload)   
-    
+     
         switch(action.type){    
             case 'ADD_BASKET':   
                 return { ...state, basket:[...state.basket,{

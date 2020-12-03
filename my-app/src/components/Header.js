@@ -9,7 +9,7 @@ import {
   } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import {getLogged} from './action/isLogged';
-import {getLANG, getLANG_ES, getLANG_RU, getLANG_PT } from './action/lang'
+import {SwitchLanguageEN, SwitchLanguageRU, SwitchLanguagePT, SwitchLanguageES} from './action/LangManage'
 import '../App.css';
 
 
@@ -21,14 +21,19 @@ const Header  = () =>{
 
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.isLogged);
-  const [langList , setLangList] = useState('en')
-  const lang = useSelector((state) => state.Language.lang[0]);
+  const [LangList, setLangList] = useState('en')
+  const getLang = useSelector((state) => state.getLangSwitch);
 
-  console.log(lang)
+
+  const en = 'en';
+
   
   
+  
 
-
+  console.log(getLang[0][0].en )
+ 
+  // console.log(_.get(getLang[0][0],[LangList,'shop']))
 return( 
    
     <>
@@ -46,7 +51,7 @@ return(
   
       <div className="mr-auto">
         
-        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{lang}</Link>
+        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{_.get(getLang[0][0],[LangList,'shop'])}</Link>
         <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>About Us</Link>
         <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>Contact Us</Link>
 
@@ -57,10 +62,10 @@ return(
             </Dropdown.Toggle>
               <div className="">
               <Dropdown.Menu>
-                  <Dropdown.Item onClick={dispatch(getLANG())} >English</Dropdown.Item>
-                  <Dropdown.Item onClick={dispatch(getLANG_RU())} >Russian</Dropdown.Item>
-                  <Dropdown.Item onClick={dispatch(getLANG_PT())} >Portuguese</Dropdown.Item>
-                  <Dropdown.Item onClick={dispatch(getLANG_ES())} >Español</Dropdown.Item>
+                  <Dropdown.Item onClick={() =>{dispatch(SwitchLanguageEN())}} >English</Dropdown.Item>
+                  <Dropdown.Item onClick={() =>{dispatch(SwitchLanguageRU())}} >Russian</Dropdown.Item>
+                  <Dropdown.Item onClick={() =>{dispatch(SwitchLanguagePT())}} >Portuguese</Dropdown.Item>
+                  <Dropdown.Item onClick={() =>{dispatch(SwitchLanguageES())}} >Español</Dropdown.Item>
               </Dropdown.Menu> 
             </div>
         </Dropdown>

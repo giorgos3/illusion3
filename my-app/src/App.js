@@ -24,6 +24,31 @@ import {
 
 function App(){
 
+  
+  
+  const Language =  [ {
+    
+    
+		'en': {
+      'shop': 'english',
+      },
+    
+      'ru': {
+        'shop': 'russian',
+        },
+        'pt': {
+          'shop': 'pt',
+          },
+          'es': {
+            'shop': 'es',
+            }, 
+  }
+  ];
+
+  
+
+  localStorage.setItem("language",JSON.stringify(Language));
+ 
 
 
   let history = useHistory();
