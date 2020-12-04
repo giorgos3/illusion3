@@ -1,19 +1,26 @@
-const getLangSwith = (state = [JSON.parse(localStorage.getItem('language'))], action) =>  {
-                console.log(state.es)
+
+
+const LANG_EN ='en'
+const LANG_RU ='ru'
+const LANG_PT ='pt'
+const LANG_ES ='es'
+
+const getLangSwitch = (state =LANG_EN, action) =>  {
+                
     switch(action.type){
         case 'EN':
-            return  [...state ,state.en]
+            return  state =LANG_EN;
 
         case 'RU':
-            return  [...state, state.ru]
+            return  state =LANG_RU;
 
         case 'PT':
-            return  [...state, state.pt]
+            return  state =LANG_PT;
 
         case 'ES':
-            return  [...state, state.es]
-        default :
-            return state;
+            return  state =LANG_ES;
+        default : return state;
+            
                                   
 
     }
@@ -21,4 +28,4 @@ const getLangSwith = (state = [JSON.parse(localStorage.getItem('language'))], ac
 
 }
 
-export default getLangSwith;
+export default getLangSwitch;

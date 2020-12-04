@@ -9,7 +9,7 @@ import {
   } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import {getLogged} from './action/isLogged';
-import {SwitchLanguageEN, SwitchLanguageRU, SwitchLanguagePT, SwitchLanguageES} from './action/LangManage'
+import {SwitchLanguageEN, SwitchLanguageRU , SwitchLanguageES , SwitchLanguagePT} from './action/LangManage'
 import '../App.css';
 
 
@@ -21,19 +21,15 @@ const Header  = () =>{
 
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.isLogged);
-  const [LangList, setLangList] = useState('en')
+
   const getLang = useSelector((state) => state.getLangSwitch);
 
 
-  const en = 'en';
+  const languages = JSON.parse(localStorage.getItem('language'))  
 
-  
-  
-  
-
-  console.log(getLang[0][0].en )
+  // console.log(languages[0][getLang] )
  
-  // console.log(_.get(getLang[0][0],[LangList,'shop']))
+ 
 return( 
    
     <>
@@ -51,14 +47,14 @@ return(
   
       <div className="mr-auto">
         
-        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{_.get(getLang[0][0],[LangList,'shop'])}</Link>
-        <Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>About Us</Link>
-        <Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>Contact Us</Link>
+        <Link to="/" style={{ textDecoration: 'none', padding:'10px' }}>{languages[0][getLang].shop}</Link>
+<Link to="/about" style={{ textDecoration: 'none', padding:'10px' }}>{languages[0][getLang].about}</Link>
+<Link to="/contact"style={{ textDecoration: 'none', padding:'10px' }}>{languages[0][getLang].contact}</Link>
 
         <div className="language">
       <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-             Select Language
+             {languages[0][getLang].selectLang}
             </Dropdown.Toggle>
               <div className="">
               <Dropdown.Menu>

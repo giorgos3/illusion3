@@ -15,8 +15,13 @@ import {
 const Shop  =  () => {
     const dispatch = useDispatch();
     const [products, setProducts] = useState([]);
-    const [language, setLanguage] = useState('en'); 
+   
   
+
+    const getLang = useSelector((state) => state.getLangSwitch);
+
+
+    const languages = JSON.parse(localStorage.getItem('language'))  
     
 
    
@@ -55,7 +60,7 @@ const Shop  =  () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{items.title}</h5>
                                     <h5 className="card-title">€{items.price}</h5>
-                                    <Link type="button"  to={{pathname: `/product/${items.id}`, state: items}}><button className="btn btn-info">View Product</button></Link>
+                    <Link type="button"  to={{pathname: `/product/${items.id}`, state: items}}><button className="btn btn-info">{languages[0][getLang].view_product}</button></Link>
                                     {/* <Link type="button"  to='/'><button onClick={() => dispatch(ProductCheckOut(productDetail)) } className="btn btn-primary">Add Card</button></Link> */}
                                    
                                 </div>
@@ -76,18 +81,18 @@ const Shop  =  () => {
             <div className="row">
               
                 <div className="col-12">
-                    <h3 style={{textAlign: "center"}}>Shop</h3>
+                    <h3 style={{textAlign: "center"}}>{languages[0][getLang].shop}</h3>
                     <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            Category
+                            {languages[0][getLang].category}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={ () =>dispatch(getAll())}>All</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>dispatch(getMenCLothing())}>Men Clothes</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>dispatch(getWomenCLothing)}>Women Clothes</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>dispatch(getJewellery())}>Jewelery</Dropdown.Item>
-                            <Dropdown.Item onClick={ () =>dispatch(getElectronics())}>Electronic</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getAll())}>{languages[0][getLang].all}</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getMenCLothing())}>{languages[0][getLang].men_cloth}</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getWomenCLothing)}>{languages[0][getLang].women_cloth}</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getJewellery())}>{languages[0][getLang].jewellery}</Dropdown.Item>
+                            <Dropdown.Item onClick={ () =>dispatch(getElectronics())}>{languages[0][getLang].electronic}</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
