@@ -7,6 +7,7 @@ import {
   import {useDispatch, useSelector} from 'react-redux';
   import {UpdateProductCheckOut} from './action/ProductCheckOut'
   import {isEmpty} from "lodash";
+  
 
   
 
@@ -18,6 +19,9 @@ const CheckOut = () =>{
     const item = useSelector((state) => state.addProduct)
     const [quantity, setQuantity] = useState(1);
     let [itemBasket, setItemBasket] = useState([...item.basket ])
+
+    const getLang = useSelector((state) => state.getLangSwitch);
+    const languages = JSON.parse(localStorage.getItem('language'))  
     
 
     
@@ -38,13 +42,17 @@ const CheckOut = () =>{
                
            
              }
-             console.log('/---------------/')
-                console.log(isEmpty(itemBasket))
-                console.log('/---------------/')
-                console.log(itemBasket.length)
+            //  console.log('/---------------/')
+            //     console.log(isEmpty(itemBasket))
+            //     console.log('/---------------/')
+            //     console.log(itemBasket.length)
            
-            
-                if(item === undefined || item.basket.length === 0 || isEmpty(itemBasket) === true || itemBasket.length === 0  ){
+                
+
+                if( isEmpty(itemBasket[0]) === true){
+                    
+                    newItemBasket = itemBasket.splice(1,1)
+                    console.log(itemBasket)
                     
                     return(
                         <div className="empty-item">

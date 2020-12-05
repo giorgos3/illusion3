@@ -41,7 +41,8 @@ function App() {
       'men_cloth':'Men Clothing',
       'women_cloth':'Women Clothing',
       'jewellery':'Jewellery',
-      'electronic':'Electronic'
+      'electronic':'Electronic',
+      'checkout_empty':'YOUR SHOPPING CART IS EMPTY',
     },
 
     'ru': {
@@ -57,6 +58,7 @@ function App() {
       'women_cloth':'Женская одежда',
       'jewellery':'Ювелирные изделия',
       'electronic':'Электронный',
+      'checkout_empty':'YOUR SHOPPING CART IS EMPTY',
     },
     'pt': {
       'shop': 'Fazer Compras',
@@ -71,6 +73,7 @@ function App() {
       'women_cloth':'Roupas Femininas',
       'jewellery':'Jóias',
       'electronic':'Eletrônica',
+      'checkout_empty':'YOUR SHOPPING CART IS EMPTY',
     },
     'es': {
       'shop': 'Tienda',
@@ -84,10 +87,11 @@ function App() {
       'men_cloth':'Hombres Ropa',
       'women_cloth':'Ropa de mujeres',
       'jewellery':'Joyería',
-      'electronic':'Electrónica'
+      'electronic':'Electrónica',
+      'checkout_empty':'YOUR SHOPPING CART IS EMPTY',
     },
   }
-  ];
+  ]; 
 
 
 
