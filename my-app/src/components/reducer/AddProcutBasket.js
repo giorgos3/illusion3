@@ -18,7 +18,10 @@ const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
                 };  
 
                 case 'UPDATE_ITEM_BASKET': 
-              
+                            console.log(state.payload)
+                        if(action.payload.lenght === 0 ){
+                            return  state  = state.basket
+                        }
                 return { ...state, basket:[ action.payload ]};
               
             default :           

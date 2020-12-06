@@ -31,12 +31,12 @@ const CheckOut = () =>{
         
         function RemoveItem(id){
             
-            console.log(id)
+            // console.log(id)
            
             let newItemBasket = [ ...itemBasket.filter(item => item.id !== id)]
-           
+
    
-            console.log(newItemBasket)
+            // console.log('newItemBakset' + newItemBasket)
                setItemBasket(newItemBasket)
                dispatch(UpdateProductCheckOut(newItemBasket))
                
@@ -49,10 +49,9 @@ const CheckOut = () =>{
            
                 
 
-                if( isEmpty(itemBasket[0]) === true){
+                if( itemBasket.length === 0){
                     
-                    newItemBasket = itemBasket.splice(1,1)
-                    console.log(itemBasket)
+                    
                     
                     return(
                         <div className="empty-item">
