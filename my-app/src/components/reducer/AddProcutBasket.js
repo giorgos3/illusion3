@@ -1,4 +1,4 @@
-import {isEmpty} from "lodash";
+import _ from "lodash";
 
 
 const INITIAL_STATE = {
@@ -18,10 +18,10 @@ const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
                 };  
 
                 case 'UPDATE_ITEM_BASKET': 
-                            console.log(state.payload)
-                        if(action.payload.lenght === 0 ){
-                            return  state  = state.basket
-                        }
+                   
+                    if(action.payload.length === 0){
+                        return {state , basket:[]}
+                    }
                 return { ...state, basket:[ action.payload ]};
               
             default :           

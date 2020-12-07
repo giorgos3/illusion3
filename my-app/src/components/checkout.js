@@ -1,78 +1,84 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import BootstrapCarousel from './Carousel';
 import '../App.css';
 import {
     Link
-  } from "react-router-dom";
-  import {useDispatch, useSelector} from 'react-redux';
-  import {UpdateProductCheckOut} from './action/ProductCheckOut'
-  import {isEmpty} from "lodash";
-  
-
-  
+} from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { UpdateProductCheckOut } from './action/ProductCheckOut'
+import { isEmpty } from "lodash";
 
 
-const CheckOut = () =>{
+
+
+
+const CheckOut = () => {
 
 
     const dispatch = useDispatch();
     const item = useSelector((state) => state.addProduct)
     const [quantity, setQuantity] = useState(1);
-    let [itemBasket, setItemBasket] = useState([...item.basket ])
+    let [itemBasket, setItemBasket] = useState([...item.basket])
 
     const getLang = useSelector((state) => state.getLangSwitch);
-    const languages = JSON.parse(localStorage.getItem('language'))  
-    
+    const languages = JSON.parse(localStorage.getItem('language'))
 
-    
-          
+
+
+
     const getProduct = () => {
 
-        
-        function RemoveItem(id){
-            
+
+        function RemoveItem(id) {
+
             // console.log(id)
-           
-            let newItemBasket = [ ...itemBasket.filter(item => item.id !== id)]
 
-   
-            // console.log('newItemBakset' + newItemBasket)
-               setItemBasket(newItemBasket)
-               dispatch(UpdateProductCheckOut(newItemBasket))
-               
-           
-             }
-            //  console.log('/---------------/')
-            //     console.log(isEmpty(itemBasket))
-            //     console.log('/---------------/')
-            //     console.log(itemBasket.length)
-           
-                
+            let newItemBasket = [...itemBasket.filter(item => item.id !== id)]
 
-                if( itemBasket.length === 0){
-                    
-                    
-                    
-                    return(
-                        <div className="empty-item">
-                            <div><i className="fa fa-shopping-basket" style={{color:'black'}}></i></div>
-                            <h3>YOUR SHOPPING CART IS EMPTY</h3>
-                            <p>We invite you to get acquainted with an assortment of our shop. Surely you can find something for yourself!</p>
-                            <Link type="button"  to='/'><button className="btn btn-primary">Go to SHOP</button></Link>
-                        </div>
-                    )
-                }
-                else{
 
-                        return(
-                            <div className="container">
 
-                                {itemBasket.map(item => (
- 
-                                    <div className="product-item" key={item.key}>
-                                    <table>            
-                                    <thead>
-                                        <tr>
+            setItemBasket(newItemBasket)
+            dispatch(UpdateProductCheckOut(newItemBasket))
+
+
+        }
+
+
+
+
+
+        if (isEmpty(itemBasket[0]) === true) {
+
+
+
+            return (
+                <div className="empty-item">
+                    <div><i className="fa fa-shopping-basket" style={{ color: 'black' }}></i></div>
+                    <h3>YOUR SHOPPING CART IS EMPTY</h3>
+                    <p>We invite you to get acquainted with an assortment of our shop. Surely you can find something for yourself!</p>
+                    <Link type="button" to='/'><button className="btn btn-primary">Go to SHOP</button></Link>
+                </div>
+            )
+        }
+        else {
+
+
+            var result = itemBasket.reduce(function (tot, item) {
+                // return the sum with previous value
+                return tot + item.price;
+
+                // set initial value as 0
+            }, 0);
+
+            return (
+                <div className="container">
+
+                    {itemBasket.map(item => (
+
+                        <div className="product-item" key={item.key}>
+                            <table>
+                                <thead>
+                                    <tr>
                                         <th>Product</th>
                                         <th>Quantity</th>
                                         <th>Title</th>
@@ -82,50 +88,55 @@ const CheckOut = () =>{
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={ item.image } alt="" />}</td>
+                                        <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={item.image} alt="" />}</td>
                                         <td>
-                                            <button onClick={ () => setQuantity( quantity + 1)}>+</button>
-                                                <input className="quantity" value={quantity}  />
-                                            <button onClick={ () => setQuantity( quantity - 1)}>-</button>
+                                            <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                                            <input className="quantity" value={quantity} />
+                                            <button onClick={() => setQuantity(quantity - 1)}>-</button>
                                         </td>
-                                        <td>{ item.title}</td>
-                                        <td>€ { item.price} </td>
-                                        <td> <button onClick={ () => RemoveItem(item.id) } className="btn btn-danger">REMOVE</button> </td>
+                                        <td>{item.title}</td>
+                                        <td>€ {item.price} </td>
+                                        <td> <button onClick={() => RemoveItem(item.id)} className="btn btn-danger">REMOVE</button> </td>
                                     </tr>
                                 </tbody>
-                                    </table>
-                                                 
-                                </div> ))}
-                                    <div className="row">
-                                        <div className="col-12 center">
-                                            <div className="button-proceed">
-                                                <button className="btn btn-success">Proceed to Checkout</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                            )
-                           
-                                             
+                            </table>
 
-                        
-                }
+
+                        </div>))}
+
+                    <div className="row">
+                        <div className="col-12 center">
+                            <div class="total-price">
+                                <h3>Total Amount : €{result} </h3>
+                            </div>
+                            <div className="button-proceed">
+                                <button className="btn btn-success">Proceed to Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+
+
+
+
+        }
     }
 
-    
-    
-    return(
+
+
+    return (
 
         <div className="container-fluid">
             <BootstrapCarousel></BootstrapCarousel>
-            <div className="row"> 
-                <div className="col-12" style={{textAlign:'center' , padding:'20px'}}>
-                     {getProduct()}
+            <div className="row">
+                <div className="col-12" style={{ textAlign: 'center', padding: '20px' }}>
+                    {getProduct()}
                 </div>
-            </div> 
+            </div>
         </div>
-        
-     
+
+
     )
 
 
