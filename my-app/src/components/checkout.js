@@ -31,7 +31,7 @@ const CheckOut = () => {
 
         function RemoveItem(id) {
 
-            // console.log(id)
+
 
             let newItemBasket = [...itemBasket.filter(item => item.id !== id)]
 
@@ -106,7 +106,7 @@ const CheckOut = () => {
 
                     <div className="row">
                         <div className="col-12 center">
-                            <div class="total-price">
+                            <div className="total-price">
                                 <h3>Total Amount : €{result} </h3>
                             </div>
                             <div className="button-proceed">

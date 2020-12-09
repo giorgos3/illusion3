@@ -22,6 +22,11 @@ th,td{
   text-align: center;
 }
 
+.basketItem{
+  font-size: 12px;
+  padding: 10px;
+  font-weight: 700;
+}
 
 .button-proceed{
   padding:50px;
