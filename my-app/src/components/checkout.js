@@ -5,24 +5,33 @@ import {
     Link
 } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { UpdateProductCheckOut } from './action/ProductCheckOut'
+import { UpdateProductCheckOut, UpdatePriceProductCheckOut } from './action/ProductCheckOut'
 import { isEmpty } from "lodash";
 
 
-export function Quantity() {
+export function Quantity(props) {
 
-
+    const dispatch = useDispatch();
+    const item = useSelector((state) => state.addProduct)
+    console.log(props)
     let [quantity, setQuantity] = useState(1)
-
+   
 
     function plusOne() {
+        dispatch(UpdatePriceProductCheckOut([props, quantity + 1]))
         setQuantity(quantity + 1)
     }
 
     function minusOne() {
-        if (quantity < 1)
-            return setQuantity(quantity + 1)
-        setQuantity(quantity - 1)
+        if (quantity <= 1){          
+                dispatch(UpdatePriceProductCheckOut([props,1]));
+                setQuantity(1); 
+        }
+        else {
+            dispatch(UpdatePriceProductCheckOut([props,quantity - 1]))
+            setQuantity(quantity - 1)
+        }
+        
 
     }
 
@@ -31,7 +40,7 @@ export function Quantity() {
     return (
         <>
             <button  onClick={minusOne}>-</button>
-            <input className="quantity" defaultValue={quantity < 1 ? 1 : quantity} />
+            <input className="quantity" value={quantity} readOnly/>
             <button  onClick={plusOne}>+</button>
 
         </>
@@ -43,7 +52,7 @@ export function Quantity() {
 
 const CheckOut = () => {
 
-
+    
     const dispatch = useDispatch();
     const item = useSelector((state) => state.addProduct)
     let [itemBasket, setItemBasket] = useState([...item.basket])
@@ -122,7 +131,7 @@ const CheckOut = () => {
                                         <td>{<img width="100" height="100" className="img-responsive img-fluid" src={item.image} alt="" />}</td>
                                         <td>
 
-                                            <Quantity />
+                                            <Quantity id={item.id}/>
 
                                         </td>
                                         <td>{item.title}</td>

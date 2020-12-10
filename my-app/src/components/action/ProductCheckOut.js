@@ -21,4 +21,18 @@ export const UpdateProductCheckOut = (payload) => {
 
     }
 
+
+}
+
+export const UpdatePriceProductCheckOut = (payload) => {
+ 
+    return{
+        
+        type:'UPDATE_PRICE',
+        payload
+        
+
+    }
+
+
 }
