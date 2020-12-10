@@ -9,6 +9,35 @@ import { UpdateProductCheckOut } from './action/ProductCheckOut'
 import { isEmpty } from "lodash";
 
 
+export function Quantity() {
+
+
+    let [quantity, setQuantity] = useState(1)
+
+
+    function plusOne() {
+        setQuantity(quantity + 1)
+    }
+
+    function minusOne() {
+        if (quantity < 1)
+            return setQuantity(quantity + 1)
+        setQuantity(quantity - 1)
+
+    }
+
+
+
+    return (
+        <>
+            <button  onClick={minusOne}>-</button>
+            <input className="quantity" defaultValue={quantity < 1 ? 1 : quantity} />
+            <button  onClick={plusOne}>+</button>
+
+        </>
+    )
+}
+
 
 
 
@@ -17,11 +46,12 @@ const CheckOut = () => {
 
     const dispatch = useDispatch();
     const item = useSelector((state) => state.addProduct)
-    const [quantity, setQuantity] = useState(1);
     let [itemBasket, setItemBasket] = useState([...item.basket])
-
     const getLang = useSelector((state) => state.getLangSwitch);
     const languages = JSON.parse(localStorage.getItem('language'))
+
+
+
 
 
 
@@ -54,49 +84,50 @@ const CheckOut = () => {
             return (
                 <div className="empty-item">
                     <div><i className="fa fa-shopping-basket" style={{ color: 'black' }}></i></div>
-                    <h3>YOUR SHOPPING CART IS EMPTY</h3>
-                    <p>We invite you to get acquainted with an assortment of our shop. Surely you can find something for yourself!</p>
-                    <Link type="button" to='/'><button className="btn btn-primary">Go to SHOP</button></Link>
+                    <h3>{languages[0][getLang].checkout_empty}</h3>
+                    <p>{languages[0][getLang].shop_find}</p>
+                    <Link type="button" to='/'><button className="btn btn-primary">{languages[0][getLang].go_shop}</button></Link>
                 </div>
             )
         }
         else {
 
-
             var result = itemBasket.reduce(function (tot, item) {
                 // return the sum with previous value
-                return tot + item.price;
+
+                return tot + (item.price);
 
                 // set initial value as 0
             }, 0);
+
 
             return (
                 <div className="container">
 
                     {itemBasket.map(item => (
 
-                        <div className="product-item" key={item.key}>
+                        <div className="product-item" key={item.id}>
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Quantity</th>
-                                        <th>Title</th>
-                                        <th>Price</th>
+                                        <th>{languages[0][getLang].product}</th>
+                                        <th>{languages[0][getLang].quantity}</th>
+                                        <th>{languages[0][getLang].title}</th>
+                                        <th>{languages[0][getLang].price}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{<img width="5%" height="5%" className="img-responsive img-fluid" src={item.image} alt="" />}</td>
+                                        <td>{<img width="100" height="100" className="img-responsive img-fluid" src={item.image} alt="" />}</td>
                                         <td>
-                                            <button onClick={() => setQuantity(quantity + 1)}>+</button>
-                                            <input className="quantity" value={quantity} />
-                                            <button onClick={() => setQuantity(quantity - 1)}>-</button>
+
+                                            <Quantity />
+
                                         </td>
                                         <td>{item.title}</td>
                                         <td>€ {item.price} </td>
-                                        <td> <button onClick={() => RemoveItem(item.id)} className="btn btn-danger">REMOVE</button> </td>
+                                        <td> <button onClick={() => RemoveItem(item.id)} className="btn btn-danger">{languages[0][getLang].remove}</button> </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -107,10 +138,10 @@ const CheckOut = () => {
                     <div className="row">
                         <div className="col-12 center">
                             <div className="total-price">
-                                <h3>Total Amount : €{result} </h3>
+                                <h3>{languages[0][getLang].tot_amount} : €{result} </h3>
                             </div>
                             <div className="button-proceed">
-                                <button className="btn btn-success">Proceed to Checkout</button>
+                                <button className="btn btn-success">{languages[0][getLang].proceed}</button>
                             </div>
                         </div>
                     </div>

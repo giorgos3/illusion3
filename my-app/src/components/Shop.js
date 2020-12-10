@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import _ from 'lodash';
 import BootstrapCarousel from './Carousel';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,14 +46,14 @@ const Shop = () => {
                     <div className="card mx-auto" style={{ width: 'auto', textAlign: 'center', height: '350px' }}>
                         <img className="mx-auto img-responsive" src={items.image} width="150" height="150" style={{ paddingTop: '10px' }} alt="Card image cap" />
                         <div className="card-body">
-                            <h5 className="card-title">{items.title}</h5>
+                            <p className="card-title">{items.title}</p>
                             <h5 className="card-title">€{items.price}</h5>
                             <div className="product-button">
                                 <div className="view-product">
                                     <Link type="button" to={{ pathname: `/product/${items.id}`, state: items }}><button className="btn btn-info">{languages[0][getLang].view_product}</button></Link>
                                 </div>
                                 <div className="add-product">
-                                    <button onClick={() => dispatch(ProductCheckOut({ 'id': items.id, 'img': items.img, 'title': items.title, 'price': items.price }))} className="btn btn-success">Add Card</button>
+                                    <button onClick={() => dispatch(ProductCheckOut({ 'id': items.id, 'img': items.image, 'title': items.title, 'price': items.price }))} className="btn btn-success">{languages[0][getLang].add_card}</button>
                                 </div>
                             </div>
                         </div>

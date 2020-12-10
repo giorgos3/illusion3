@@ -13,7 +13,7 @@ const LoginUser = () => {
     
     let history = useHistory();
     const dispatch = useDispatch();
-    const isLogged = useSelector((state) => state.isLogged)
+    
 
  const submit = () =>{
 

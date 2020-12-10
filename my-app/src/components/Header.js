@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import _ from 'lodash';
+import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from 'react-bootstrap/Navbar';
 import 'font-awesome/css/font-awesome.min.css';
