@@ -71,6 +71,7 @@ const Header = () => {
           <Link to="/checkout" style={{ textDecoration: 'none', padding: '10px' }}>
             <div className="basketCount">
               <i className="fa fa-shopping-basket" style={{ color: 'white' }}>
+                
                 {item.basket.length === 0 ? <div />
                   :
                   <span className="basketItem">{item.basket.length}</span>
