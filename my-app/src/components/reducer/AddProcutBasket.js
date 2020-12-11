@@ -14,7 +14,8 @@ const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
                     id: action.payload.id,
                     image: action.payload.img,
                     title: action.payload.title,
-                    price: action.payload.price
+                    initial_price: action.payload.price,
+                    new_price:'',
                 }]
             }; 
 
@@ -23,13 +24,13 @@ const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
 
 
         case 'UPDATE_PRICE':
-                console.log(action.payload[1]) 
-                let oldPrice = state.basket.find(object => object.id == action.payload[0].id ).price  
+                 
                
 
                 return  {basket:[...state.basket.map(obj => {
                     if (obj.id === action.payload[0].id) {
-                        obj.price = oldPrice *action.payload[1];
+                        obj.new_price = obj.initial_price *action.payload[1];
+                        console.log(obj.new_price)
                     }
                    
                     return obj;

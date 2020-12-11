@@ -15,7 +15,7 @@ export function Quantity(props) {
     const item = useSelector((state) => state.addProduct)
     console.log(props)
     let [quantity, setQuantity] = useState(1)
-   
+
 
     function plusOne() {
         dispatch(UpdatePriceProductCheckOut([props, quantity + 1]))
@@ -23,15 +23,15 @@ export function Quantity(props) {
     }
 
     function minusOne() {
-        if (quantity <= 1){          
-                dispatch(UpdatePriceProductCheckOut([props,1]));
-                setQuantity(1); 
+        if (quantity <= 1) {
+            dispatch(UpdatePriceProductCheckOut([props, 1]));
+            setQuantity(1);
         }
         else {
-            dispatch(UpdatePriceProductCheckOut([props,quantity - 1]))
+            dispatch(UpdatePriceProductCheckOut([props, quantity - 1]))
             setQuantity(quantity - 1)
         }
-        
+
 
     }
 
@@ -39,9 +39,9 @@ export function Quantity(props) {
 
     return (
         <>
-            <button  onClick={minusOne}>-</button>
-            <input className="quantity" value={quantity} readOnly/>
-            <button  onClick={plusOne}>+</button>
+            <button onClick={minusOne}>-</button>
+            <input className="quantity" value={quantity} readOnly />
+            <button onClick={plusOne}>+</button>
 
         </>
     )
@@ -52,7 +52,7 @@ export function Quantity(props) {
 
 const CheckOut = () => {
 
-    
+
     const dispatch = useDispatch();
     const item = useSelector((state) => state.addProduct)
     let [itemBasket, setItemBasket] = useState([...item.basket])
@@ -103,9 +103,12 @@ const CheckOut = () => {
 
             var result = itemBasket.reduce(function (tot, item) {
                 // return the sum with previous value
-
-                return tot + (item.price);
-
+                if (item.new_price =='') {
+                    return tot + (item.initial_price);
+                }
+                else {
+                    return tot + (item.new_price);
+                }
                 // set initial value as 0
             }, 0);
 
@@ -131,11 +134,15 @@ const CheckOut = () => {
                                         <td>{<img width="100" height="100" className="img-responsive img-fluid" src={item.image} alt="" />}</td>
                                         <td>
 
-                                            <Quantity id={item.id}/>
+                                            <Quantity id={item.id} />
 
                                         </td>
                                         <td>{item.title}</td>
-                                        <td>€ {item.price} </td>
+                                        <td>€ {
+                                            item.new_price == '' ? item.initial_price : item.new_price
+
+                                        }
+                                        </td>
                                         <td> <button onClick={() => RemoveItem(item.id)} className="btn btn-danger">{languages[0][getLang].remove}</button> </td>
                                     </tr>
                                 </tbody>
