@@ -15,32 +15,35 @@ const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
                     image: action.payload.img,
                     title: action.payload.title,
                     initial_price: action.payload.price,
-                    new_price:'',
+                    new_price: '',
+                    active: true
                 }]
-            }; 
+            };
 
         case 'UPDATE_ITEM_BASKET':
             return { basket: action.payload }
 
 
         case 'UPDATE_PRICE':
-                 
-               
 
-                return  {basket:[...state.basket.map(obj => {
+
+
+            return {
+                basket: [...state.basket.map(obj => {
                     if (obj.id === action.payload[0].id) {
-                        obj.new_price = obj.initial_price *action.payload[1];
+                        obj.new_price = (obj.initial_price * action.payload[1]);
                         console.log(obj.new_price)
                     }
-                   
+
                     return obj;
-                  })]};
-            
+                })]
+            };
 
-            
-            
 
-    
+
+
+
+
         default:
             return state
 

@@ -103,7 +103,7 @@ const CheckOut = () => {
 
             var result = itemBasket.reduce(function (tot, item) {
                 // return the sum with previous value
-                if (item.new_price =='') {
+                if (item.new_price == '') {
                     return tot + (item.initial_price);
                 }
                 else {
@@ -139,7 +139,8 @@ const CheckOut = () => {
                                         </td>
                                         <td>{item.title}</td>
                                         <td>€ {
-                                            item.new_price == '' ? item.initial_price : item.new_price
+
+                                            item.new_price == '' ? item.initial_price.toFixed(2) : item.new_price.toFixed(2)
 
                                         }
                                         </td>
@@ -154,7 +155,7 @@ const CheckOut = () => {
                     <div className="row">
                         <div className="col-12 center">
                             <div className="total-price">
-                                <h3>{languages[0][getLang].tot_amount} : €{result} </h3>
+                                <h3>{languages[0][getLang].tot_amount} : €{result.toFixed(2)} </h3>
                             </div>
                             <div className="button-proceed">
                                 <button className="btn btn-success">{languages[0][getLang].proceed}</button>

@@ -15,6 +15,7 @@ import {
 const Shop = () => {
     const dispatch = useDispatch();
     const [products, setProducts] = useState([]);
+    const basket = useSelector((state) => state.addProduct)
     const getLang = useSelector((state) => state.getLangSwitch);
     const languages = JSON.parse(localStorage.getItem('language'))
     const category = useSelector((state) => state.getProductCategory)
@@ -53,7 +54,16 @@ const Shop = () => {
                                     <Link type="button" to={{ pathname: `/product/${items.id}`, state: items }}><button className="btn btn-info">{languages[0][getLang].view_product}</button></Link>
                                 </div>
                                 <div className="add-product">
-                                    <button onClick={() => dispatch(ProductCheckOut({ 'id': items.id, 'img': items.image, 'title': items.title, 'price': items.price }))} className="btn btn-success">{languages[0][getLang].add_card}</button>
+                                    <button
+                                        onClick={() => dispatch(ProductCheckOut({ 'id': items.id, 'img': items.image, 'title': items.title, 'price': items.price }))}
+                                        className="btn btn-success"
+                                        // disabled ={ 
+                                        //     basket.baskete
+                                        // }
+                                        >
+                                           {console.log( basket.basket.includes(items.id, basket.basket.filter(item => item.id == items.id)))}
+                                        {languages[0][getLang].add_card}
+                                    </button>
                                 </div>
                             </div>
                         </div>
