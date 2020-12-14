@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import BootstrapCarousel from './Carousel';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,24 +22,24 @@ export const AddToCart = (props) => {
     const languages = JSON.parse(localStorage.getItem('language'))
     const [disableStatus, setDisableStatus] = useState(false)
 
-    const handleClick = (e) => {
+    const handleClick = () => {
         setDisableStatus(true);
         dispatch(ProductCheckOut({ 'id': props.items.id, 'img': props.items.image, 'title': props.items.title, 'price': props.items.price }))
     }
-    return(
+    return (
         <div className="add-product">
-        <button
-            onClick={handleClick}
+            <button
+                onClick={handleClick}
 
-            className="btn btn-success"
-        disabled={disableStatus}
-        >
-           {  disableStatus === true ? languages[0][getLang].exist : languages[0][getLang].add_card } 
+                className="btn btn-success"
+                disabled={disableStatus}
+            >
+                {disableStatus === true ? languages[0][getLang].exist : languages[0][getLang].add_card}
 
-            
-        </button>
 
-    </div>
+            </button>
+
+        </div>
     )
 }
 
@@ -49,8 +49,6 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const getLang = useSelector((state) => state.getLangSwitch);
     const item = useSelector((state) => state.addProduct);
-    const [isActive, setIsActive] = useState()
-    const [getBasket, setGetBasket] = useState([...item.basket])
     const languages = JSON.parse(localStorage.getItem('language'))
     const category = useSelector((state) => state.getProductCategory)
 
@@ -88,7 +86,7 @@ const Shop = () => {
                                 <div className="view-product">
                                     <Link type="button" to={{ pathname: `/product/${items.id}`, state: items }}><button className="btn btn-info">{languages[0][getLang].view_product}</button></Link>
                                 </div>
-                                    <AddToCart items={items}/>
+                                <AddToCart items={items} />
 
                             </div>
                         </div>

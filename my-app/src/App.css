@@ -45,6 +45,12 @@ th,td{
   text-align: center;
 }
 
+.payment-form{
+  
+  display: grid;
+  text-align: center;
+  margin:0 auto;
+}
 
 .footer{
   margin-top: 1rem;

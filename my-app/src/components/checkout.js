@@ -158,7 +158,7 @@ const CheckOut = () => {
                                 <h3>{languages[0][getLang].tot_amount} : €{result.toFixed(2)} </h3>
                             </div>
                             <div className="button-proceed">
-                                <button className="btn btn-success">{languages[0][getLang].proceed}</button>
+                               <Link type="button" to='/payment'> <button className="btn btn-success">{languages[0][getLang].proceed}</button> </Link>
                             </div>
                         </div>
                     </div>

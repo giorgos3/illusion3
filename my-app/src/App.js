@@ -11,6 +11,7 @@ import Footer from './components/footer';
 import ProductDetail from './components/ProductDetail'
 import Profile from './components/profile';
 import CheckOut from './components/checkout';
+import payment from './components/payment';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +19,7 @@ import {
   useHistory
 } from "react-router-dom";
 import PrivateRoute from './components/PrivateRoute';
+
 
 
 
@@ -153,6 +155,7 @@ function App() {
         <Router history={history}>
           <Header />
           <Switch>
+            <Route exact path="/payment" component={payment} ></Route>
             <Route exact path="/checkout" component={CheckOut} ></Route>
             <Route exact path="/product/:id" component={ProductDetail} ></Route>
             <Route exact path="/contact" component={Contact} ></Route>
