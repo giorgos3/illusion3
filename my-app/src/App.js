@@ -11,7 +11,7 @@ import Footer from './components/footer';
 import ProductDetail from './components/ProductDetail'
 import Profile from './components/profile';
 import CheckOut from './components/checkout';
-import payment from './components/payment';
+import Payment from './components/payment';
 import {
   BrowserRouter as Router,
   Switch,
@@ -55,7 +55,17 @@ function App() {
       'price':'Price',
       'remove':'REMOVE',
       'tot_amount':'Total Amount',
-      'proceed':'Proceed Checkout'
+      'proceed':'Proceed Checkout',
+      'name':'Name',
+      'surname':'Surname',
+      'company':'Company(Optional)',
+      'country':'Country/Region',
+      'street':'Street Adress',
+      'town':'Town/City',
+      'zip_code':'PostCode / ZIP',
+      'email':'Email Address',
+      'other':'Other(Optional)'
+
     },
 
     'ru': {
@@ -82,7 +92,17 @@ function App() {
       'price':'Цена',
       'remove':'УДАЛЯТЬ',
       'tot_amount':'Итого',
-      'proceed':'Продолжить оформление заказа'
+      'proceed':'Продолжить оформление заказа',
+      'name':'имя',
+      'surname':'фамилия',
+      'company':'Компания (необязательно)',
+      'country':'Страна / регион',
+      'street':'Адрес улицы',
+      'town':'Город / Город',
+      'zip_code':'Почтовый индекс',
+      'email':'Эл. адрес',
+      'other':'Другое (необязательно)',
+      'submit':'Разместить'
 
     },
     'pt': {
@@ -109,7 +129,17 @@ function App() {
       'price':'Preço',
       'remove':'REMOVER',
       'tot_amount':'Valor total',
-      'proceed':'Proceder checkout'
+      'proceed':'Proceder checkout',
+      'name':'Nome',
+      'surname':'Sobrenome',
+      'company':'Companhia (opcional)',
+      'country':'País / Região',
+      'street':'Endereço',
+      'town':'Cidade Cidade',
+      'zip_code':'Código Postal',
+      'email':'O email',
+      'other':'Outro (opcional)',
+      'submit':'Enviar'
     },
     'es': {
       'shop': 'Tienda',
@@ -135,7 +165,17 @@ function App() {
       'price':'Precio',
       'remove':'ELIMINAR',
       'tot_amount':'Cantidad total',
-      'proceed':'Continuar con el pago'
+      'proceed':'Continuar con el pago',
+      'name':'Nombre',
+      'surname':'Apellido',
+      'company':'Companía (opcional)',
+      'country':'País / Región',
+      'street':'Dirección',
+      'town':'Pueblo / Ciudad',
+      'zip_code':'Código postal',
+      'email':'Email',
+      'other':'Otro (opcional)',
+      'submit':'Enviar'
 
     },
   }
@@ -155,7 +195,7 @@ function App() {
         <Router history={history}>
           <Header />
           <Switch>
-            <Route exact path="/payment" component={payment} ></Route>
+            <Route exact path="/payment" component={Payment} ></Route>
             <Route exact path="/checkout" component={CheckOut} ></Route>
             <Route exact path="/product/:id" component={ProductDetail} ></Route>
             <Route exact path="/contact" component={Contact} ></Route>

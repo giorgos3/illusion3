@@ -12,7 +12,7 @@ import { isEmpty } from "lodash";
 export function Quantity(props) {
 
     const dispatch = useDispatch();
-    const item = useSelector((state) => state.addProduct)
+    
 
     let [quantity, setQuantity] = useState(1)
 
