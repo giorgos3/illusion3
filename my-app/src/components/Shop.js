@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import BootstrapCarousel from './Carousel';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,11 +12,45 @@ import {
 } from "react-router-dom";
 
 
+
+
+export const AddToCart = (props) => {
+    console.log(props)
+    const dispatch = useDispatch();
+    const getLang = useSelector((state) => state.getLangSwitch);
+
+    const languages = JSON.parse(localStorage.getItem('language'))
+    const [disableStatus, setDisableStatus] = useState(false)
+
+    const handleClick = (e) => {
+        setDisableStatus(true);
+        dispatch(ProductCheckOut({ 'id': props.items.id, 'img': props.items.image, 'title': props.items.title, 'price': props.items.price }))
+    }
+    return(
+        <div className="add-product">
+        <button
+            onClick={handleClick}
+
+            className="btn btn-success"
+        disabled={disableStatus}
+        >
+           {  disableStatus === true ? languages[0][getLang].exist : languages[0][getLang].add_card } 
+
+            
+        </button>
+
+    </div>
+    )
+}
+
+
 const Shop = () => {
     const dispatch = useDispatch();
     const [products, setProducts] = useState([]);
-    const basket = useSelector((state) => state.addProduct)
     const getLang = useSelector((state) => state.getLangSwitch);
+    const item = useSelector((state) => state.addProduct);
+    const [isActive, setIsActive] = useState()
+    const [getBasket, setGetBasket] = useState([...item.basket])
     const languages = JSON.parse(localStorage.getItem('language'))
     const category = useSelector((state) => state.getProductCategory)
 
@@ -34,10 +68,11 @@ const Shop = () => {
     }, [category]);
 
 
-    console.log(category)
 
 
     const itemProducts = () => {
+
+
 
         return (
 
@@ -53,18 +88,8 @@ const Shop = () => {
                                 <div className="view-product">
                                     <Link type="button" to={{ pathname: `/product/${items.id}`, state: items }}><button className="btn btn-info">{languages[0][getLang].view_product}</button></Link>
                                 </div>
-                                <div className="add-product">
-                                    <button
-                                        onClick={() => dispatch(ProductCheckOut({ 'id': items.id, 'img': items.image, 'title': items.title, 'price': items.price }))}
-                                        className="btn btn-success"
-                                        // disabled ={ 
-                                        //     basket.baskete
-                                        // }
-                                        >
-                                           {console.log( basket.basket.includes(items.id, basket.basket.filter(item => item.id == items.id)))}
-                                        {languages[0][getLang].add_card}
-                                    </button>
-                                </div>
+                                    <AddToCart items={items}/>
+
                             </div>
                         </div>
                     </div>

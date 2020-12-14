@@ -20,7 +20,7 @@ const ProductDetail = ( props ) =>{
     const price = props.location.state.price;
     
 
-    const productDetail = { 'id': id ,'img' : img ,'title': title, 'price': price}
+    const productDetail = { 'id': id ,'img' : img ,'title': title, 'price': price }
     
 return(
     <div className="container-fluid">

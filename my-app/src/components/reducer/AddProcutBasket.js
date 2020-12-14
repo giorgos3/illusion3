@@ -16,7 +16,6 @@ const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
                     title: action.payload.title,
                     initial_price: action.payload.price,
                     new_price: '',
-                    active: true
                 }]
             };
 
@@ -32,7 +31,7 @@ const AddRemoveUpdateProductReducer = (state = INITIAL_STATE, action) => {
                 basket: [...state.basket.map(obj => {
                     if (obj.id === action.payload[0].id) {
                         obj.new_price = (obj.initial_price * action.payload[1]);
-                        console.log(obj.new_price)
+                        
                     }
 
                     return obj;

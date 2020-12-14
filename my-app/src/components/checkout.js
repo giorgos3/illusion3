@@ -13,7 +13,7 @@ export function Quantity(props) {
 
     const dispatch = useDispatch();
     const item = useSelector((state) => state.addProduct)
-    console.log(props)
+
     let [quantity, setQuantity] = useState(1)
 
 

@@ -26,7 +26,6 @@ const Header = () => {
 
   const languages = JSON.parse(localStorage.getItem('language'))
 
-  console.log(item)
   return (
 
     <>
