@@ -20,9 +20,13 @@
   "homepage": "https://github.com/bbachi/react-nodejs-example#readme",
   "dependencies": {
     "api": "^2.4.4",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.4",
-    "pg": "^8.5.1"
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.8",
+    "pg": "^8.5.1",
+    "validator": "^13.5.2"
   },
   "devDependencies": {
     "del": "^5.1.0",

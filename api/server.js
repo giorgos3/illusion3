@@ -1,31 +1,38 @@
 const express = require('express');
 const path = require('path');
-const { Client } = require('pg')  
-const app = express(),
-      bodyParser = require("body-parser");
-      port = 3080;
-
-const users = [];
-
-
-
-// const client = new Client({
-//   user: 'postgres',
-//   host: 'localhost',
-//   database: 'my-app',
-//   password: '1234',
-//   port: 5432,
-// });
-
-// client.connect();
+const User = require('./db/models/user');
+require('./db/mongoose');
+bodyParser = require("body-parser");
+port = 3080;
+const app = express();
+app.use(express.json());
 
 
-app.post('/login',function(req,res){
-	const user = req.body;
-//   const pwd = req.body.password;
-	
-	
-  return res.json('hello');
+app.post('/register', async (req, res) => {
+  
+
+  const user = new User(req.body)
+
+  try {
+    await user.save()
+    res.status(201).send({ message: 'success' })
+  } catch (e) {
+    res.status(400).send({ message: 'failed' })
+
+  }
+
+});
+
+
+app.post('/users/login', async (req, res) => {
+  console.log(req.body);
+  try {
+    const user = await User.findByCredentials(req.body.email, req.body.password)
+    res.status(201).send({ message: 'success' })
+  } catch (e) {
+    res.status(400).send({ message: 'failed' })
+  }
+
 });
 
 
@@ -34,22 +41,12 @@ app.post('/login',function(req,res){
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../my-app/build')));
 
-// app.get('/api/users', (req, res) => {
-//   console.log('api/users called!')
-//   res.json(users);
-// });
 
-// app.post('/api/user', (req, res) => {
-//   const user = req.body.user;
-//   console.log('Adding user:::::', user);
-//   users.push(user);
-//   res.json("user addedd");
-// });
 
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../my-app/build/index.html'));
 });
 
 app.listen(port, () => {
-    console.log(`Server listening on the port::${port}`);
+  console.log(`Server listening on the port: ${port}`);
 });
