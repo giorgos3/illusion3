@@ -23,14 +23,17 @@ const LoginUser = () => {
 
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmU5YzQxM2M2ZWEyZDMyOWM2OTU2YmUiLCJpYXQiOjE2MDkxNTU2MDN9.Zht_m7Mq8VC3LdYKrr5jqx3N496t5_2HvsHFOq-f4_c'
+            },
             body: JSON.stringify({ email: email, password: password })
         };
 
         fetch('http://localhost:3000/users/login', requestOptions)
             .then(response => response.json())
             .then(response => {
-                console.log(response.message);
+                console.log(response);
                 if (response.message === 'success') {
                     dispatch(getLogged())
                     history.push('/')

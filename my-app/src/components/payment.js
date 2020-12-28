@@ -14,7 +14,7 @@ const Payment = () => {
     const getLang = useSelector((state) => state.getLangSwitch);
     const languages = JSON.parse(localStorage.getItem('language'))
     const item = useSelector((state) => state.addProduct)
-
+    
     var result = item.basket.reduce(function (tot, item) {
         // return the sum with previous value
         if (item.new_price == '') {
@@ -25,6 +25,42 @@ const Payment = () => {
         }
         // set initial value as 0
     }, 0);
+    
+
+    const handleSubmit = () =>{
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmU5YzQxM2M2ZWEyZDMyOWM2OTU2YmUiLCJpYXQiOjE2MDkxNTU2MDN9.Zht_m7Mq8VC3LdYKrr5jqx3N496t5_2HvsHFOq-f4_c'
+            },
+            body: JSON.stringify({ product: item.basket, totalPrice: result })
+        };
+
+        fetch('http://localhost:3000/order', requestOptions)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                if (response.message === 'success') {
+                    
+                    alert('Success')
+                }
+                else {
+                    alert('Provide valid data')
+                }
+
+            })
+            .catch(error => {
+
+                console.error('There was an error!', error);
+            });
+
+
+
+      }
+
+
 
     return (
 
@@ -337,10 +373,9 @@ const Payment = () => {
 
                                 {languages[0][getLang].other} :
                         </label>
-                                <input type="text" name="name" />
-
-                                <input type="submit" value={languages[0][getLang].submit} />
+                                   
                             </form>
+                            <button className="btn btn-success" onClick={handleSubmit()}>{languages[0][getLang].submit}</button>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-12 col-sm-12" style={{ textAlign: "center" }}>

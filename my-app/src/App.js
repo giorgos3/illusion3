@@ -64,7 +64,8 @@ function App() {
       'town':'Town/City',
       'zip_code':'PostCode / ZIP',
       'email':'Email Address',
-      'other':'Other(Optional)'
+      'other':'Other(Optional)',
+      'submit':'Submit'
 
     },
 
