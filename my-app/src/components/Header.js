@@ -70,7 +70,7 @@ const Header = () => {
           <Link to="/checkout" style={{ textDecoration: 'none', padding: '10px' }}>
             <div className="basketCount">
               <i className="fa fa-shopping-basket" style={{ color: 'white' }}>
-                
+
                 {item.basket.length === 0 ? <div />
                   :
                   <span className="basketItem">{item.basket.length}</span>
@@ -91,7 +91,11 @@ const Header = () => {
                       Profile
                     </Link>
                   </Dropdown.Item>
-                  <Dropdown.Item >Order History</Dropdown.Item>
+                  <Dropdown.Item >
+                    <Link to="/orders-history" style={{ textDecoration: 'none', padding: '10px' }}>
+                      Order History
+                    </Link>
+                  </Dropdown.Item>
                   <Dropdown.Item >Change Password</Dropdown.Item>
                   <Dropdown.Item onClick={() => { dispatch(getLogged()) }} >Logout</Dropdown.Item>
                 </Dropdown.Menu>

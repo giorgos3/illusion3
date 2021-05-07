@@ -17,7 +17,7 @@ const Payment = () => {
     
     var result = item.basket.reduce(function (tot, item) {
         // return the sum with previous value
-        if (item.new_price == '') {
+        if (item.new_price === '') {
             return tot + (item.initial_price);
         }
         else {
@@ -35,7 +35,7 @@ const Payment = () => {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmU5YzQxM2M2ZWEyZDMyOWM2OTU2YmUiLCJpYXQiOjE2MDkxNTU2MDN9.Zht_m7Mq8VC3LdYKrr5jqx3N496t5_2HvsHFOq-f4_c'
             },
-            body: JSON.stringify({ product: item.basket, totalPrice: result })
+            body: JSON.stringify({ products: item.basket, totalPrice: result })
         };
 
         fetch('http://localhost:3000/order', requestOptions)
@@ -399,7 +399,7 @@ const Payment = () => {
                                             <td>{item.title}</td>
                                             <td>€ {
 
-                                                item.new_price == '' ? item.initial_price.toFixed(2) : item.new_price.toFixed(2)
+                                                item.new_price === '' ? item.initial_price.toFixed(2) : item.new_price.toFixed(2)
 
 
                                             }

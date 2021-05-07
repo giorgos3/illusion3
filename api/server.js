@@ -32,7 +32,7 @@ app.post('/register', async (req, res) => {
 
 
 app.post('/users/login', auth, async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password)
 
@@ -47,7 +47,7 @@ app.post('/users/login', auth, async (req, res) => {
 
 
 app.post('/order', auth, async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   const order = new Order({
     ...req.body,
     userID: req.user._id
@@ -55,11 +55,22 @@ app.post('/order', auth, async (req, res) => {
 
   try {
     await order.save()
-    res.status(201).send({message:'Success'})
+    res.status(201).send({ message: 'Success' })
   } catch (e) {
-    res.status(400).send({message:'Failed'})
+    res.status(400).send({ message: 'Failed' })
   }
 
+})
+
+
+app.get('/users/orders-history', auth, async (req, res) => {
+  console.log(req.body)
+  try {
+    const orders = await User.findByIdOrder(req.body.email)
+    res.status(201).send({orders})
+  } catch (e) {
+    res.status(400).send()
+  }
 })
 
 

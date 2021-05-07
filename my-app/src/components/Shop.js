@@ -15,7 +15,7 @@ import {
 
 
 export const AddToCart = (props) => {
-    console.log(props)
+ 
     const dispatch = useDispatch();
     const getLang = useSelector((state) => state.getLangSwitch);
 

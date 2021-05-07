@@ -103,7 +103,7 @@ const CheckOut = () => {
 
             var result = itemBasket.reduce(function (tot, item) {
                 // return the sum with previous value
-                if (item.new_price == '') {
+                if (item.new_price === '') {
                     return tot + (item.initial_price);
                 }
                 else {
@@ -137,10 +137,10 @@ const CheckOut = () => {
                                             <Quantity id={item.id} />
 
                                         </td>
-                                        <td>{item.title}</td>
+                                        <td>{item.title}</td> 
                                         <td>€ {
 
-                                            item.new_price == '' ? item.initial_price.toFixed(2) : item.new_price.toFixed(2)
+                                            item.new_price === '' ? item.initial_price.toFixed(2) : item.new_price.toFixed(2)
 
                                         }
                                         </td>
