@@ -27,7 +27,7 @@
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.8",
     "pg": "^8.5.1",
-    "validator": "^13.5.2"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "del": "^5.1.0",
